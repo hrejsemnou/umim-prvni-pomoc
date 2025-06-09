@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import classNames from "classnames";
+import clsx from "clsx";
 
 const NavigationItem = ({
   slug,
@@ -13,12 +13,15 @@ const NavigationItem = ({
   toggle: () => void;
 }) => {
   const pathName = usePathname();
+
   return (
     <Link
       onClick={toggle}
-      className={classNames("hover:underline w-screen text-center md:w-auto", {
-        underline: pathName === slug,
-      })}
+      className={clsx(
+        "hover:bg-red-600 font-bold px-6 py-2 rounded-[20px] w-screen text-center md:w-auto",
+        pathName === slug && "bg-red-600",
+        slug === "/podporte-nas" && "bg-blue-600",
+      )}
       href={slug}
     >
       {label}
