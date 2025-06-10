@@ -29,7 +29,7 @@ const RootLayout = ({
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
       >
         <Navigation />
-        <div className="flex-1 flex items-center justify-center px-12">
+        <div className="flex-1 flex items-center justify-center px-12 py-6">
           {children}
         </div>
       </body>
