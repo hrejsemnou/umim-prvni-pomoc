@@ -1,11 +1,22 @@
 export default function AboutUs() {
   return (
-    <div className="text-center max-w-xl">
-      <h1 className="text-3xl font-bold mb-6">O nás</h1>
-      <button className="bg-accent text-white px-6 py-2 rounded-md mb-6">
-        O nás
-      </button>
-      <p>O nás</p>
+    <div className="text-center max-w-xl gap-8 flex flex-col">
+      <h1 className="text-3xl font-bold mb-6">
+        První český vyhledávač vzdělávání v první pomoci
+      </h1>
+      <p>Ještě to tu chystáme...</p>
+      <p>
+        Kurzy první pomoci živě, online, knihy a další publikace, hry,
+        vzdělávací programy a weby – vše na jednom místě. Aby každý z nás věděl,
+        co dělat, když jde do tuhýho.
+      </p>
+      <a
+        className="text-primary font-bold"
+        target="_blank"
+        href="mailto:zivot@masjenjeden.cz"
+      >
+        zivot@masjenjeden.cz
+      </a>
     </div>
   );
 }
