@@ -12,10 +12,10 @@ const NavigationBar = ({
   toggle: () => void;
 }) => {
   return (
-    <div className="flex justify-between bg-foreground text-background py-6 px-12 z-20">
+    <div className="flex justify-between bg-foreground text-background py-2 px-12 z-20">
       <div className="flex gap-8 items-center">
         <Link href="/">
-          <Image src="/logo.svg" alt="logo" width={30} height={30} />
+          <Image src="/logo.png" alt="logo" width={50} height={40} />
         </Link>
       </div>
       <div className="hidden md:flex gap-8 items-center">

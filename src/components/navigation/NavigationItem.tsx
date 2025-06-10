@@ -17,14 +17,18 @@ const NavigationItem = ({
   return (
     <Link
       onClick={toggle}
-      className={clsx(
-        "hover:bg-red-600 font-bold px-6 py-2 rounded-[20px] w-screen text-center md:w-auto",
-        pathName === slug && "bg-red-600",
-        slug === "/podporte-nas" && "bg-blue-600",
-      )}
       href={slug}
+      className="group w-6/12 text-center md:w-auto"
     >
-      {label}
+      <span
+        className={clsx(
+          "group-hover:bg-accent group-hover:text-background font-bold px-6 py-2 rounded-[20px]",
+          pathName === slug && "bg-accent text-background",
+          slug === "/podporte-nas" && "bg-primary text-background",
+        )}
+      >
+        {label}
+      </span>
     </Link>
   );
 };
