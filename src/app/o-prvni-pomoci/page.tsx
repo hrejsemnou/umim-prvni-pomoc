@@ -1,6 +1,6 @@
 export default function AboutFirstAid() {
   return (
-    <div className="text-center max-w-xl gap-8 flex flex-col">
+    <div className="text-center max-w-xl max-h-dvh md:gap-8 gap-4 py-4 flex flex-col">
       <h1 className="text-3xl font-bold mb-6">
         První český vyhledávač vzdělávání v první pomoci
       </h1>
