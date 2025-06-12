@@ -1,6 +1,5 @@
 import routes from "@/components/navigation/routes";
 import NavigationItem from "./NavigationItem";
-import Image from "next/image";
 
 const SideBar = ({
   isOpen,
@@ -21,9 +20,6 @@ const SideBar = ({
             label={item.label}
           />
         ))}
-        <button onClick={toggle}>
-          <Image src="/icons/menu.svg" alt="menu" width={30} height={30} />
-        </button>
       </div>
     )
   );
