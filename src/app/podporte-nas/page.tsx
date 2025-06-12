@@ -2,7 +2,7 @@ export default function SupportUs() {
   return (
     <div className="text-center max-w-xl max-h-dvh md:gap-8 gap-4 py-4 flex flex-col">
       <h1 className="text-3xl font-bold mb-6">
-        První český vyhledávač vzdělávání v první pomoci
+        První český vyhledávač vzdělávání v&nbsp;první pomoci
       </h1>
       <p>Ještě to tu chystáme...</p>
       <p>
