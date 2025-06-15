@@ -1,7 +1,7 @@
 export default function Search() {
   return (
     <div className="text-center max-h-dvh md:gap-8 gap-4 py-4 flex flex-col">
-      <h1 className="text-6xl font-bold mb-6 text-accent">
+      <h1 className="text-6xl font-bold mb-6 text-foreground">
         Ještě to tu chystáme...
       </h1>
       <div className="flex flex-col gap-2">
@@ -11,7 +11,7 @@ export default function Search() {
         <p className="text-2xl">Dejte nám vědět na některém z našich kanálů…</p>
       </div>
       <div className="flex flex-col gap-1">
-        <p className="text-accent text-xl font-bold">Máš jen jeden, z.ú.</p>
+        <p className="text-xl font-bold">Máš jen jeden, z.ú.</p>
         <a
           target="_blank"
           href="https://masjenjeden.cz"

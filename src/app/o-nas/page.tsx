@@ -1,19 +1,23 @@
+import Image from "next/image";
+
 export default function AboutUs() {
   return (
-    <div className="text-center max-h-dvh md:gap-8 gap-4 py-4 flex flex-col">
+    <div className="text-center md:gap-8 gap-4 py-12 flex flex-col">
       <h1 className="text-3xl font-bold mb-6">O nás</h1>
       <p>
         Jmenuju se Ellen, jsem vzděláním lékařka, která chtěla i na rodičáku
         dělat něco, co má skutečný dopad. Jelikož sama učím první pomoc, často
-        vysvětluji, jak důležitá je prevence a vzdělávání se v první pomoci.
-        Přestože dokážu druhé nadchnout, uvědomila jsem si, že v mé snaze
-        popularizovat první pomoc chybí něco zásadního. Jedno místo, kam mohu
-        druhé odkázat, kde by každý snadno a rychle našel kurz či jiný typ
-        vzdělávání v první pomoci podle svých potřeb. A tak se zrodila myšlenka
-        na webový vyhledávač vzdělávání právě v první pomoci. A protože vím, že
-        Mám jen jeden, neotálela jsem a od stavění hradů z písku jsem začala
-        běhat k počítači. Teď se vyhledávač ještě peče, ale až bude na světě,
-        bude místem, kde si každý přijde na to svoje. Místem, kde
+        vysvětluji, jak důležitá je{" "}
+        <strong>prevence a vzdělávání se v&nbsp;první pomoci</strong>. Přestože
+        dokážu druhé nadchnout, uvědomila jsem si, že v mé snaze popularizovat
+        první pomoc chybí něco zásadního. <strong>Jedno místo</strong>, kam mohu
+        druhé odkázat, kde by každý <strong>snadno a rychle</strong> našel kurz
+        či jiný typ vzdělávání v první pomoci{" "}
+        <strong>podle svých potřeb</strong>. A tak se zrodila myšlenka na webový
+        vyhledávač vzdělávání právě v první pomoci. A protože vím, že Mám jen
+        jeden, neotálela jsem a od stavění hradů z písku jsem začala běhat k
+        počítači. Teď se vyhledávač ještě peče, ale až bude na světě, bude
+        místem, kde si každý přijde na to svoje. Místem, kde
         <br />
         <br />
         <strong>Karel</strong>, který jede s dětmi na tábor,{" "}
@@ -34,24 +38,35 @@ export default function AboutUs() {
       <p>
         <strong>A kde najdete i vy!</strong>
       </p>
-      <h2 className="text-2xl font-bold">
-        Spojuje nás touha <span className="underline">ten jeden, co máme</span>,
-        nepromarnit a zpřístupnit první pomoc úplně každému. <br />
+      <h2 className="text-2xl font-bold text-grey">
+        Spojuje nás touha{" "}
+        <a
+          href="https://masjenjeden.cz"
+          className="underline hover:text-primary"
+        >
+          ten jeden, co máme
+        </a>
+        , nepromarnit a zpřístupnit první pomoc úplně každému. <br />
         Jednoduše, s pár kliky, díky kterým zachráníte život.
       </h2>
+      <div className="text-left pl-16">
+        <h3 className="text-xl">
+          Jsme <strong>Umím První Pomoc</strong>
+        </h3>
+        <p>první český vyhledávač vzdělávání v první pomoci</p>
+      </div>
       <div className="flex text-left px-8 gap-8 justify-between">
+        <br />
         <div className="flex-2/5">
-          <h3 className="text-xl mb-2">
-            Jsme <strong>Umím První Pomoc</strong>
-          </h3>
-          <p>první český vyhledávač vzdělávání v první pomoci</p>
-          <br />
           <p>
             Tvoříme jedno místo, kde si každý z nás najde vzdělávání v první
-            pomoci podle svých potřeb. Kurzy, online, knihy a další publikace,
-            hry, vzdělávací programy a weby. Živě, online, veřejně, soukromě.
-            Pro mámy, táty, tety, strejdy, dědy, babičky, děti, jednotlivce i
-            týmy. Aby každý z nás věděl, co dělat, když jde do tuhýho.
+            pomoci podle svých potřeb.
+          </p>
+          <p>
+            Kurzy, online, knihy a další publikace, hry, vzdělávací programy a
+            weby. Živě, online, veřejně, soukromě. Pro mámy, táty, tety,
+            strejdy, dědy, babičky, děti, jednotlivce i týmy. Aby každý z nás
+            věděl, co dělat, když jde do tuhýho.
           </p>
           <br />
           <p>
@@ -62,27 +77,55 @@ export default function AboutUs() {
         <div className="flex-2/5">
           <ul className="list-disc">
             <li>
-              <strong>Popularizujeme</strong> - šíříme povědomí o první pomoci
-              napříč společností od dětí po seniory, mezi jednotlivci i týmy,
-              mezi laiky i odborníky
+              <span className="font-bold text-accent">Popularizujeme</span> -
+              šíříme povědomí o první pomoci napříč společností od dětí po
+              seniory, mezi jednotlivci i týmy, mezi laiky i odborníky
             </li>
             <li>
-              <strong>Zpřístupňujeme</strong> - zlepšujeme dostupnost vzdělávání
-              v první pomoci, propojujeme zájemce o kurzy a další s ověřenými
-              poskytovateli
+              <span className="font-bold text-accent">Zpřístupňujeme</span> -
+              zlepšujeme dostupnost vzdělávání v první pomoci, propojujeme
+              zájemce o kurzy a další s ověřenými poskytovateli
             </li>
             <li>
-              <strong>Detabuizujeme a demýtizujeme</strong> - mluvíme o první
-              pomoci nahlas, bez studu, protože i laická záchrana života má
-              obrovský smysl
+              <span className="font-bold text-accent">
+                Detabuizujeme a demýtizujeme
+              </span>{" "}
+              - mluvíme o první pomoci nahlas, bez studu, protože i laická
+              záchrana života má obrovský smysl
             </li>
           </ul>
         </div>
       </div>
       <h2 className="text-2xl font-bold">Náš tým</h2>
       <p>
-        Ve dvou se to lépe táhne. A stále hledáme další parťáky. Napište nám.
+        Ve dvou se to lépe táhne. A stále hledáme další parťáky. Přidáte se k
+        nám?
       </p>
+
+      <div className="flex gap-4 px-4 justify-center">
+        <div className="flex gap-3 flex-col justify-center items-center">
+          <Image
+            style={{ filter: "grayscale()" }}
+            src="/ellen.png"
+            alt="ellen-c"
+            width={240}
+            height={240}
+          ></Image>
+          <p className="font-bold text-profile-text text-xl">Ellen Činková</p>
+          <p>zakladatelka, ředitelka, lékařka a máma</p>
+        </div>
+        <div className="flex gap-3 flex-col justify-center items-center">
+          <Image
+            style={{ filter: "grayscale()" }}
+            src="/lukas.png"
+            alt="lukas-s"
+            width={240}
+            height={240}
+          ></Image>
+          <p className="font-bold text-profile-text text-xl">Lukáš Sahula</p>
+          <p>spoluzakladatel, programátor, milovník kari</p>
+        </div>
+      </div>
     </div>
   );
 }
