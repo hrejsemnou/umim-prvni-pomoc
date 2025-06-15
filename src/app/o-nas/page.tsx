@@ -38,7 +38,7 @@ export default function AboutUs() {
       <p>
         <strong>A kde najdete i vy!</strong>
       </p>
-      <h2 className="text-2xl font-bold text-grey">
+      <h2 className="text-2xl mb-4 font-bold text-grey">
         Spojuje nás touha{" "}
         <a
           href="https://masjenjeden.cz"
@@ -49,13 +49,13 @@ export default function AboutUs() {
         , nepromarnit a zpřístupnit první pomoc úplně každému. <br />
         Jednoduše, s pár kliky, díky kterým zachráníte život.
       </h2>
-      <div className="text-left pl-16">
+      <div className="text-center mb-4">
         <h3 className="text-xl">
           Jsme <strong>Umím První Pomoc</strong>
         </h3>
         <p>první český vyhledávač vzdělávání v první pomoci</p>
       </div>
-      <div className="flex text-left px-8 gap-8 justify-between">
+      <div className="flex text-left gap-8 justify-between flex-wrap">
         <br />
         <div className="flex-2/5">
           <p>
@@ -68,9 +68,8 @@ export default function AboutUs() {
             strejdy, dědy, babičky, děti, jednotlivce i týmy. Aby každý z nás
             věděl, co dělat, když jde do tuhýho.
           </p>
-          <br />
           <p>
-            Děláme to pro sebe, pro svourodinu a blízké i pro ty, které potkáme
+            Děláme to pro sebe, pro svou rodinu a blízké i pro ty, které potkáme
             na ulici. Spolu umíme první pomoc. Spolu zachraňujeme životy.
           </p>
         </div>

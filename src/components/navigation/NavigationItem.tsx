@@ -23,6 +23,7 @@ const NavigationItem = ({
       <span
         className={clsx(
           "group-hover:bg-primary group-hover:text-background font-bold px-6 py-2 rounded-[20px]",
+          pathName !== slug && slug !== "/podporte-nas" && "text-foreground",
           pathName === slug && "bg-primary text-background",
           slug === "/podporte-nas" && "bg-accent text-background",
         )}
