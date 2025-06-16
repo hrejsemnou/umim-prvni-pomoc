@@ -4,6 +4,7 @@ interface Route {
 }
 
 const routes: Route[] = [
+  { slug: "/", label: "Domů" },
   {
     slug: "/vyhledavac",
     label: "Vyhledávač",
@@ -12,10 +13,10 @@ const routes: Route[] = [
     slug: "/o-prvni-pomoci",
     label: "O první pomoci",
   },
-  {
-    slug: "/o-nas",
-    label: "O nás",
-  },
+  // {
+  //   slug: "/o-nas",
+  //   label: "O nás",
+  // },
   {
     slug: "/podporte-nas",
     label: "Podpořte nás",

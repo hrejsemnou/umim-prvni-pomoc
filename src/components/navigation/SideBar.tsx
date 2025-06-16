@@ -11,7 +11,6 @@ const SideBar = ({
   return (
     isOpen && (
       <div className="flex flex-col pt-20 h-dvh w-dvw fixed z-10 bg-background text-foreground gap-4 items-center justify-center md:hidden">
-        <NavigationItem toggle={toggle} slug={"/"} label="Domů" />
         {routes.map((item) => (
           <NavigationItem
             toggle={toggle}

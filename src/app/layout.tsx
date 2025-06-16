@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Umím První Pomoc",
+  title: "Umím první pomoc",
   description: "První český vyhledávač vzdělávání v první pomoci",
 };
 
