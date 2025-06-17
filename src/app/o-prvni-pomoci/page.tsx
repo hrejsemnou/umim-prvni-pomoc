@@ -1,6 +1,6 @@
 export default function AboutFirstAid() {
   return (
-    <div className="text-center max-h-dvh md:gap-8 gap-4 py-4 flex flex-col">
+    <div className="px-12 text-center max-h-dvh md:gap-8 gap-4 py-4 flex flex-col">
       <h1 className="text-6xl font-bold mb-6 text-foreground">
         Ještě to tu chystáme...
       </h1>
