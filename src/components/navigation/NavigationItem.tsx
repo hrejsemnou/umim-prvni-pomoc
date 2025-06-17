@@ -13,11 +13,18 @@ const NavigationItem = ({
   toggle: () => void;
 }) => {
   const pathName = usePathname();
+  const isPodporteNas = slug === "/podporte-nas";
+
+  let url = slug;
+  if (isPodporteNas) {
+    url = "https://www.masjenjeden.cz/#podporte-nas";
+  }
 
   return (
     <Link
       onClick={toggle}
-      href={slug}
+      href={url}
+      target={isPodporteNas ? "_blank" : "_self"}
       className="group w-6/12 text-center md:w-auto"
     >
       <span
