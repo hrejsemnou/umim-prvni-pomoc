@@ -16,6 +16,8 @@
   --color-accent: #940a1d;
   --color-primary: #10505b;
   --color-grey: #59495f;
+  --color-background-white: #f7f7f7;
+  --color-background-grey: #f0eef2;
 }
 
 body {
