@@ -13,10 +13,10 @@ const routes: Route[] = [
     slug: "/o-prvni-pomoci",
     label: "O první pomoci",
   },
-  // {
-  //   slug: "/o-nas",
-  //   label: "O nás",
-  // },
+  {
+    slug: "/o-nas",
+    label: "O nás",
+  },
   {
     slug: "/podporte-nas",
     label: "Podpořte nás",
