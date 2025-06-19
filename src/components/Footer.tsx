@@ -2,11 +2,11 @@ import Image from "next/image";
 
 const Footer = () => {
   return (
-    <div className="flex justify-between bg-white text-foreground py-8 px-12 flex-col sm:flex-row gap-12 sm:gap-0">
+    <div className="flex justify-between bg-primary text-background py-8 px-12 flex-col sm:flex-row gap-12 sm:gap-0">
       <div className="text-center sm:text-left flex flex-col gap-2 justify-center items-center sm:justify-start sm:items-baseline grow-0 shrink-0 basis-[33%]">
         <div>
           <p className="font-bold">
-            <a className="text-accent" href="masjenjeden.cz">
+            <a className="hover:text-mas-jen-jeden" href="masjenjeden.cz">
               Máš jen jeden, z.ú.
             </a>
           </p>
@@ -18,7 +18,7 @@ const Footer = () => {
         </div>
         <p>
           <a
-            className="font-bold text-primary"
+            className="font-bold hover:text-mas-jen-jeden"
             href="mailto:zivot@masjenjeden.cz"
             target="_blank"
           >
@@ -64,14 +64,14 @@ const Footer = () => {
           <a
             target="_blank"
             href="files/GDPR.pdf"
-            className="font-bold text-xs text-foreground hover:text-primary"
+            className="font-bold text-xs hover:text-mas-jen-jeden"
           >
             Zpracování dat
           </a>
           <a
             target="_blank"
             href="https://www.masjenjeden.cz"
-            className="font-bold text-xs text-foreground hover:text-primary"
+            className="font-bold text-xs hover:text-mas-jen-jeden"
           >
             Naše organizace
           </a>

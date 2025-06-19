@@ -3,7 +3,7 @@ import Image from "next/image";
 export default function Home() {
   return (
     <div className="flex flex-col justify-center items-center w-full">
-      <div className="text-center bg-background-white px-12 min-h-[75dvh] md:gap-8 gap-4 py-6 flex flex-col justify-center items-center md:mt-0 mt-[6rem]">
+      <div className="text-center bg-background-grey px-12 min-h-[50dvh] md:gap-8 gap-4 py-6 flex flex-col justify-center items-center w-full">
         <h1 className="text-5xl font-bold mb-6 text-grey">
           První český vyhledávač vzdělávání v&nbsp;první pomoci
         </h1>
@@ -15,25 +15,26 @@ export default function Home() {
           <span className="text-accent">jde do tuhýho</span>.
         </p>
       </div>
-      <div className="text-center w-screen px-12 bg-background-grey min-h-[50dvh] md:gap-8 gap-4 py-6 flex flex-col justify-center items-center">
-        <h2 className="text-4xl font-bold text-primary">
-          Jsme Umím první pomoc
-        </h2>
+
+      <div className="text-center w-screen px-12 bg-background-white min-h-[50dvh] md:gap-8 gap-6 py-6 flex flex-col justify-center items-center">
+        <h2 className="text-4xl font-bold text-grey">Jsme Umím první pomoc</h2>
         <p>
           Tvoříme jedno místo, kde si každý najde vzdělávání v první pomoci
           podle svých potřeb.
         </p>
-        <div className="flex justify-between flex-col sm:flex-row gap-12 sm:gap-0">
+        <div className="flex justify-between flex-col sm:flex-row gap-12 sm:gap-0 w-full">
           <div className="flex flex-col gap-2 items-center grow-0 shrink-0 basis-[33%]">
             <div className="rounded-[50%] overflow-hidden">
               <Image
                 alt="first-aid-course"
                 src="/images/homepage_1.jpg"
-                width={200}
-                height={200}
+                width={250}
+                height={250}
               />
             </div>
-            <h3 className="text-primary text-xl font-bold">Veškeré možnosti</h3>
+            <h3 className="text-foreground text-xl font-bold">
+              Veškeré možnosti
+            </h3>
             <p className="text-xs">
               Kurzy, knihy a další publikace, hry, vzdělávací programy a
               události.
@@ -44,11 +45,11 @@ export default function Home() {
               <Image
                 alt="map"
                 src="/images/homepage_2.jpg"
-                width={200}
-                height={200}
+                width={250}
+                height={250}
               />
             </div>
-            <h3 className="text-primary text-xl font-bold">
+            <h3 className="text-foreground text-xl font-bold">
               Po celé ČR nebo online
             </h3>
             <p className="text-xs">Živě, online, veřejně, soukromě.</p>
@@ -58,14 +59,64 @@ export default function Home() {
               <Image
                 alt="family"
                 src="/images/homepage_3.jpg"
-                width={200}
-                height={200}
+                width={250}
+                height={250}
               />
             </div>
-            <h3 className="text-primary text-xl font-bold">Pro každého</h3>
+            <h3 className="text-foreground text-xl font-bold">Pro každého</h3>
             <p className="text-xs">
               Pro mámy, táty, tety, strejdy, dědy, babičky, děti, jednotlivce,
               týmy, laiky i odborníky
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div className="text-center w-screen px-12 bg-background-grey min-h-[40dvh] md:gap-8 gap-4 py-6 flex flex-col justify-center items-center">
+        <div className="flex justify-between flex-col sm:flex-row gap-12 sm:gap-0 w-full">
+          <div className="flex flex-col gap-2 justify-center items-center grow-0 shrink-0 basis-[33%]">
+            <Image
+              src="/icons/loader.svg"
+              alt="popularizace"
+              width={80}
+              height={80}
+            ></Image>
+            <h4 className="font-bold text-lg text-foreground">
+              Popularizujeme
+            </h4>
+            <p className="text-foreground">
+              šíříme povědomí o první pomoci napříč společností od dětí po
+              seniory, mezi jednotlivci i týmy, mezi laiky i odborníky
+            </p>
+          </div>
+          <div className="flex flex-col gap-2 items-center grow-0 shrink-0 basis-[33%]">
+            <Image
+              src="/icons/key.svg"
+              alt="zpřístupnění"
+              width={80}
+              height={80}
+            ></Image>
+            <h4 className="font-bold text-lg text-foreground">
+              Zpřístupňujeme
+            </h4>
+            <p className="text-foreground">
+              zlepšujeme dostupnost vzdělávání v první pomoci, propojujeme
+              zájemce o kurzy a další s ověřenými poskytovateli
+            </p>
+          </div>
+          <div className="flex flex-col gap-2 items-center grow-0 shrink-0 basis-[33%]">
+            <Image
+              src="/icons/info.svg"
+              alt="detabuizace-demýtizace"
+              width={80}
+              height={80}
+            ></Image>
+            <h4 className="font-bold text-lg text-foreground">
+              Detabuizujeme a demýtizujeme
+            </h4>
+            <p className="text-foreground">
+              mluvíme o první pomoci nahlas, bez studu, protože i laická
+              záchrana života má obrovský smysl
             </p>
           </div>
         </div>
