@@ -2,8 +2,8 @@ import Image from "next/image";
 
 const Footer = () => {
   return (
-    <div className="flex justify-between bg-white text-foreground py-8 px-12">
-      <div className="flex flex-col gap-2">
+    <div className="flex justify-between bg-white text-foreground py-8 px-12 flex-col sm:flex-row gap-12 sm:gap-0">
+      <div className="flex flex-col gap-2 justify-center items-center sm:justify-start sm:items-baseline">
         <div>
           <p className="font-bold">
             <a className="text-accent" href="masjenjeden.cz">
