@@ -25,11 +25,11 @@ const NavigationItem = ({
       onClick={toggle}
       href={url}
       target={isPodporteNas ? "_blank" : "_self"}
-      className="group w-6/12 text-center md:w-auto"
+      className={"group w-6/12 text-center md:w-auto"}
     >
       <span
         className={clsx(
-          "group-hover:bg-primary group-hover:text-background font-bold px-6 py-2 rounded-[20px]",
+          "group-hover:bg-primary group-hover:text-background font-bold px-6 py-2 rounded-[20px] text-nowrap",
           pathName === slug && "bg-primary text-background",
           slug === "/podporte-nas" && "bg-accent text-background",
           pathName !== slug && slug !== "/podporte-nas" && "text-foreground",
