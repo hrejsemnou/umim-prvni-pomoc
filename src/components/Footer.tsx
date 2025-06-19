@@ -3,7 +3,7 @@ import Image from "next/image";
 const Footer = () => {
   return (
     <div className="flex justify-between bg-white text-foreground py-8 px-12 flex-col sm:flex-row gap-12 sm:gap-0">
-      <div className="flex flex-col gap-2 justify-center items-center sm:justify-start sm:items-baseline">
+      <div className="text-center sm:text-left flex flex-col gap-2 justify-center items-center sm:justify-start sm:items-baseline grow-0 shrink-0 basis-[33%]">
         <div>
           <p className="font-bold">
             <a className="text-accent" href="masjenjeden.cz">
@@ -27,7 +27,7 @@ const Footer = () => {
         </p>
       </div>
 
-      <div className="flex justify-center items-center flex-col gap-8">
+      <div className="flex justify-center items-center flex-col gap-8 grow-0 shrink-0 basis-[33%]">
         <div className="flex justify-center items-center gap-4">
           <a target="_blank" href="https://www.instagram.com/umimprvnipomoc/">
             <Image
@@ -78,7 +78,7 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className="flex justify-center items-center">
+      <div className="flex sm:justify-end justify-center items-center grow-0 shrink-0 basis-[33%]">
         <a target="_blank" href="https://masjenjeden.cz">
           <Image
             src="/logo_ustav.png"

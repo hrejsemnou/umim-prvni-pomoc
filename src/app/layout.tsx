@@ -32,7 +32,7 @@ const RootLayout = ({
       >
         <Providers>
           <Navigation />
-          <div className="flex-1 flex items-center justify-center bg-background-grey">
+          <div className="flex-1 flex items-center justify-center">
             {children}
           </div>
           <Footer />
