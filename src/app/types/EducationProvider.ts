@@ -18,8 +18,8 @@ export interface EducationProvider {
   kontakty_web: string | null;
   lokalita_kraj: string | null;
   lokalita_vsude: boolean | null;
-  nazev: string;
-  podnazev: string | null;
+  name: string;
+  subname: string | null;
   pristupnost_bezbarierove: boolean | null;
   pristupnost_neslysici: boolean | null;
   pristupnost_nevidomi: boolean | null;
