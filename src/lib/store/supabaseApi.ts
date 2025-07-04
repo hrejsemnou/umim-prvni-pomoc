@@ -5,27 +5,28 @@ import { EducationProvider } from "@/app/types/EducationProvider";
 export const supabaseApi = createApi({
   reducerPath: "supabaseApi",
   baseQuery: fakeBaseQuery(), // since we're using Supabase client directly
-  endpoints: (builder) => ({
-    getEducationProviders: builder.query<EducationProvider[], void>({
-      async queryFn() {
+  endpoints: (build) => ({
+    getEducationProviders: build.query<EducationProvider[], void>({
+      queryFn: async () => {
         const { data, error } = await supabase
           .from("education_providers")
-          .select("*");
-        if (error) return { error };
-        return { data: data as EducationProvider[] };
+          .select();
+        if (error) {
+          return { error };
+        }
+        return { data };
       },
     }),
-    addEducationProvider: builder.mutation<
-      EducationProvider,
-      EducationProvider
-    >({
-      async queryFn(body) {
+    addEducationProvider: build.mutation({
+      queryFn: async (body) => {
         const { data, error } = await supabase
           .from("education_providers")
           .insert([body])
           .select();
-        if (error) return { error };
-        return { data: data![0] as EducationProvider };
+        if (error) {
+          return { error };
+        }
+        return { data: data![0] };
       },
     }),
   }),

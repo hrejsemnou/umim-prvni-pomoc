@@ -1,49 +1,31 @@
 "use client";
+import { useAddEducationProviderMutation } from "@/lib/store/supabaseApi";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import { useForm } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 import * as z from "zod";
 
 const FormSchema = z.object({
-  name: z.string().min(2, {
-    message: "Name must be at least 2 characters.",
-  }),
-  email: z.string().min(6, {
-    message: "Email must be at least 6 characters.",
-  }),
+  name: z.string(),
+  subname: z.string(),
 });
 
 type FormData = z.infer<typeof FormSchema>;
-
-const GOOGLE_SCRIPT_URL =
-  "https://script.google.com/macros/s/AKfycbyNqHc87tXd7bTTaCgpqJoUXux3gB4Ueh26H463_qldenP8AusO3dYhaQPXL8IWmbmEFQ/exec";
 
 const ProvidersForm = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-    reset,
   } = useForm<FormData>({ resolver: zodResolver(FormSchema) });
 
-  const onSubmit = async (data: FormData) => {
-    const { name, email } = data;
-    try {
-      await fetch(GOOGLE_SCRIPT_URL, {
-        method: "POST",
-        mode: "no-cors", // Required for Google Apps Script
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ name: name, email: email }),
-      });
+  const [addEducationProvider] = useAddEducationProviderMutation();
 
-      // You won't know if it really succeeded — optimistic update
-      alert("Form submitted!");
-      reset(); // Clear form
+  const onSubmit: SubmitHandler<FormData> = async (data: FormData) => {
+    try {
+      await addEducationProvider(data).unwrap();
     } catch (err) {
-      console.error("Submission error:", err);
-      alert("Something went wrong.");
+      console.error("Failed to create provider:", err);
     }
   };
 
@@ -53,6 +35,7 @@ const ProvidersForm = () => {
         Username
       </label>
       <input
+        type="text"
         placeholder="john.doe@example.com"
         {...register("name")}
         className="py-2 px-4 text-foreground bg-background rounded-[8px] border-foreground border-[1px]"
@@ -63,11 +46,10 @@ const ProvidersForm = () => {
       </label>
       <input
         placeholder="12345"
-        type="email"
-        {...register("email")}
+        type="text"
+        {...register("subname")}
         className="py-2 px-4 text-foreground bg-background rounded-[8px] border-foreground border-[1px]"
       />
-      {errors.email && <span>{errors.email.message}</span>}
       <button
         type="submit"
         className="text-background font-bold color-foreground self-end bg-blue-500 rounded-[8px] py-2 px-4"
