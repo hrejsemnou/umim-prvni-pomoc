@@ -15,7 +15,8 @@ export default function Providers() {
         <ul>
           {educationProviders?.map((p) => (
             <li key={p.id}>
-              {p.name} - {p.subname}
+              {p.name} - {p.subname} -{" "}
+              {p.education_provider_form?.live.toString()}
             </li>
           ))}
         </ul>

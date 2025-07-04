@@ -22,8 +22,51 @@ const ProvidersForm = () => {
   const [addEducationProvider] = useAddEducationProviderMutation();
 
   const onSubmit: SubmitHandler<FormData> = async (data: FormData) => {
+    const finalData = {
+      base: { ...data, active: false },
+      accessibility: {
+        no_barriers: true,
+        hearing_impaired: false,
+        sight_impaired: false,
+      },
+      contact: {
+        email: "mail",
+        facebook: "fejs",
+        instagram: "instac",
+        phone: "333",
+        website: "www",
+      },
+      focus: {
+        mountains: true,
+        infants: true,
+        waterside: true,
+        paramedics: false,
+      },
+      form: { live: false, online: true },
+      locations: { everywhere: false, region: "Praha" },
+      publicity: { public: true, private: true },
+      targets: {
+        children: true,
+        adults: true,
+        lectors: true,
+        professionals: true,
+        elderly: true,
+        teams_driving_schools: false,
+        teams_schools: false,
+        teams_companies: true,
+      },
+      terrains: { masking: true, theory: false, vr: true },
+      types: {
+        game: true,
+        book: false,
+        course: false,
+        podcast: true,
+        event: true,
+        website: true,
+      },
+    };
     try {
-      await addEducationProvider(data).unwrap();
+      await addEducationProvider(finalData).unwrap();
     } catch (err) {
       console.error("Failed to create provider:", err);
     }

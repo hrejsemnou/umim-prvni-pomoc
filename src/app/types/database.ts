@@ -348,7 +348,21 @@ export type Database = {
       [_ in never]: never;
     };
     Functions: {
-      [_ in never]: never;
+      create_full_education_provider: {
+        Args: {
+          base: Database["public"]["Tables"]["education_providers"]["Insert"];
+          accessibility: Database["public"]["Tables"]["education_provider_accessibility"]["Insert"];
+          contact: Database["public"]["Tables"]["education_provider_contact"]["Insert"];
+          focus: Database["public"]["Tables"]["education_provider_focus"]["Insert"];
+          form: Database["public"]["Tables"]["education_provider_form"]["Insert"];
+          locations: Database["public"]["Tables"]["education_provider_locations"]["Insert"];
+          publicity: Database["public"]["Tables"]["education_provider_publicity"]["Insert"];
+          targets: Database["public"]["Tables"]["education_provider_targets"]["Insert"];
+          terrains: Database["public"]["Tables"]["education_provider_terrains"]["Insert"];
+          types: Database["public"]["Tables"]["education_provider_types"]["Insert"];
+        };
+        Returns: undefined;
+      };
     };
     Enums: {
       [_ in never]: never;
