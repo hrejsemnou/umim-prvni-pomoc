@@ -66,18 +66,6 @@ export const supabaseApi = createApi({
         return { data };
       },
     }),
-    // addEducationProvider: build.mutation({
-    //   queryFn: async (body) => {
-    //     const { data, error } = await supabase
-    //       .from("education_providers")
-    //       .insert([body])
-    //       .select();
-    //     if (error) {
-    //       return { error };
-    //     }
-    //     return { data: data![0] };
-    //   },
-    // }),
   }),
 });
 

@@ -42,9 +42,18 @@ const ProvidersForm = () => {
         waterside: true,
         paramedics: false,
       },
-      form: { live: false, online: true },
-      locations: { everywhere: false, region: "Praha" },
-      publicity: { public: true, private: true },
+      form: {
+        live: false,
+        online: true,
+      },
+      locations: {
+        everywhere: false,
+        region: "Praha",
+      },
+      publicity: {
+        public: true,
+        private: true,
+      },
       targets: {
         children: true,
         adults: true,
@@ -55,7 +64,11 @@ const ProvidersForm = () => {
         teams_schools: false,
         teams_companies: true,
       },
-      terrains: { masking: true, theory: false, vr: true },
+      terrains: {
+        masking: true,
+        theory: false,
+        vr: true,
+      },
       types: {
         game: true,
         book: false,
