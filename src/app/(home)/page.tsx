@@ -33,8 +33,8 @@ export default function Home() {
           >
             <Image
               src="/icons/instagram.svg"
-              width={40}
-              height={40}
+              width={30}
+              height={30}
               alt="Instagram link"
             />
           </Link>
@@ -44,8 +44,8 @@ export default function Home() {
           >
             <Image
               src="/icons/facebook.svg"
-              width={40}
-              height={40}
+              width={30}
+              height={30}
               alt="Facebook link"
             />
           </Link>
@@ -55,17 +55,22 @@ export default function Home() {
           >
             <Image
               src="/icons/linkedin.svg"
-              width={40}
-              height={40}
+              width={30}
+              height={30}
               alt="Linkedin link"
             />
           </Link>
         </div>
-        <div className="text-background">
+        <div className="text-background flex flex-col gap-2">
           <p>
             <strong>Máš jen jeden, z. ú.</strong>
           </p>
-          <Link href="https://www.masjenjeden.cz">www.masjenjeden.cz</Link>
+          <Link target="_blank" href="https://www.masjenjeden.cz">
+            www.masjenjeden.cz
+          </Link>
+          <Link target="_blank" href="mailto:zivot@masjenjeden.cz">
+            zivot@masjenjeden.cz
+          </Link>
         </div>
       </div>
     </div>

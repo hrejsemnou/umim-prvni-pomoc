@@ -17,7 +17,7 @@ const NavigationItem = ({
 
   let url = slug;
   if (isPodporteNas) {
-    url = "https://www.masjenjeden.cz/#podporte-nas";
+    url = "https://www.masjenjeden.cz/podporte-nas";
   }
 
   return (
