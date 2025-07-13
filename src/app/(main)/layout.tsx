@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "@/app/globals.css";
-// import Navigation from "@/components/navigation";
+import Navigation from "@/components/navigation";
 import Providers from "@/app/providers";
-// import Footer from "@/components/Footer";
+import Footer from "@/components/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,11 +31,11 @@ const RootLayout = ({
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-dvh flex flex-col`}
       >
         <Providers>
-          {/* <Navigation /> */}
+          <Navigation />
           <div className="flex-1 flex items-center justify-center">
             {children}
           </div>
-          {/* <Footer /> */}
+          <Footer />
         </Providers>
       </body>
     </html>
