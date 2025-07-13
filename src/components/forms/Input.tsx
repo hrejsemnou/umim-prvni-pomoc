@@ -1,16 +1,15 @@
 import clsx from "clsx";
-import { FieldError, useFormContext } from "react-hook-form";
+import { useFormContext } from "react-hook-form";
 
 interface InputProps {
   name: string;
   type: string;
   placeholder?: string;
   label: string;
-  error?: FieldError;
 }
 
 export const Input = (props: InputProps) => {
-  const { register } = useFormContext();
+  const { register, formState } = useFormContext();
 
   return (
     <div
@@ -38,9 +37,9 @@ export const Input = (props: InputProps) => {
           props.type === "checkbox" ? "order-1" : "order-2",
         )}
       />
-      {props.error && (
+      {formState.errors[props.name] && (
         <span className="text-accent self-start order-3">
-          {props.error.message}
+          {formState.errors[props.name]?.message?.toString()}
         </span>
       )}
     </div>

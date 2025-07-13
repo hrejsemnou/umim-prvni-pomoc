@@ -1,45 +1,18 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "@/app/globals.css";
+import BaseLayout from "@/app/baseLayout";
 import Navigation from "@/components/navigation";
-import Providers from "@/app/providers";
 import Footer from "@/components/Footer";
+import { siteMetadata } from "@/app/siteMetadata";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+export const metadata = siteMetadata;
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-export const metadata: Metadata = {
-  title: "Umím první pomoc",
-  description: "První český vyhledávač vzdělávání v první pomoci",
-};
-
-const RootLayout = ({
+export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) => {
+}) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-dvh flex flex-col`}
-      >
-        <Providers>
-          <Navigation />
-          <div className="flex-1 flex items-center justify-center">
-            {children}
-          </div>
-          <Footer />
-        </Providers>
-      </body>
-    </html>
+    <BaseLayout header={<Navigation />} footer={<Footer />}>
+      {children}
+    </BaseLayout>
   );
-};
-
-export default RootLayout;
+}
