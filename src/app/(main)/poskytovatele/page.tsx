@@ -1,4 +1,4 @@
-import ProvidersForm from "@/components/forms/EducationProvidersForm";
+import EducationProvidersForm from "@/components/forms/educationProvidersForm";
 
 export default function EducationProviders() {
   return (
@@ -7,7 +7,7 @@ export default function EducationProviders() {
         Poskytujete vzdělání v první pomoci?
       </h1>
       <p className="text-xl">Dejte nám o sobě vědět</p>
-      <ProvidersForm />
+      <EducationProvidersForm />
     </div>
   );
 }
