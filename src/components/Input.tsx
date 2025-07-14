@@ -28,6 +28,7 @@ export const Input = (props: InputProps) => {
         {props.label}
       </label>
       <input
+        id={props.name}
         type={props.type}
         placeholder={props.placeholder}
         {...register(props.name)}
