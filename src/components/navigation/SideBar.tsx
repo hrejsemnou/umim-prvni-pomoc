@@ -1,5 +1,5 @@
 import routes from "@/components/navigation/routes";
-import NavigationItem from "./NavigationItem";
+import NavigationItem from "@/components/navigation/NavigationItem";
 
 const SideBar = ({
   isOpen,

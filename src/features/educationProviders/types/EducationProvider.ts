@@ -1,4 +1,4 @@
-import { Database } from "@/app/types/database";
+import { Database } from "@/lib/types/database";
 
 export type EducationProviderSelectType =
   Database["public"]["Tables"]["education_providers"]["Row"] & {

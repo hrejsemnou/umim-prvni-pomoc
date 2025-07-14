@@ -1,4 +1,4 @@
-import { Input } from "@/components/forms/Input";
+import { Input } from "@/components/Input";
 
 export const Locations = () => (
   <section>

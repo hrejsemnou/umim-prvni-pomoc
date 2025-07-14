@@ -1,4 +1,4 @@
-import EducationProvidersForm from "@/components/forms/educationProvidersForm";
+import EducationProvidersForm from "@/features/educationProviders/components/EducationProvidersForm";
 
 export default function EducationProviders() {
   return (

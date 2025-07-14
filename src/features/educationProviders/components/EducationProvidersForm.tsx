@@ -4,17 +4,17 @@ import { zodResolver } from "@hookform/resolvers/zod";
 
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 import * as z from "zod";
-import { CombinedFormSchema } from "@/components/forms/educationProvidersForm/FormSchemas";
-import { Base } from "@/components/forms/educationProvidersForm/Base";
-import { Accessibility } from "@/components/forms/educationProvidersForm/Accessibility";
-import { Contact } from "@/components/forms/educationProvidersForm/Contact";
-import { Form } from "@/components/forms/educationProvidersForm/Form";
-import { Focus } from "@/components/forms/educationProvidersForm/Focus";
-import { Locations } from "@/components/forms/educationProvidersForm/Locations";
-import { Publicity } from "@/components/forms/educationProvidersForm/Publicity";
-import { Targets } from "@/components/forms/educationProvidersForm/Targets";
-import { Terrains } from "@/components/forms/educationProvidersForm/Terrains";
-import { Types } from "@/components/forms/educationProvidersForm/Types";
+import { CombinedFormSchema } from "@/features/educationProviders/components/FormSchemas";
+import { Base } from "@/features/educationProviders/components/Base";
+import { Accessibility } from "@/features/educationProviders/components/Accessibility";
+import { Contact } from "@/features/educationProviders/components/Contact";
+import { Form } from "@/features/educationProviders/components/Form";
+import { Focus } from "@/features/educationProviders/components/Focus";
+import { Locations } from "@/features/educationProviders/components/Locations";
+import { Publicity } from "@/features/educationProviders/components/Publicity";
+import { Targets } from "@/features/educationProviders/components/Targets";
+import { Terrains } from "@/features/educationProviders/components/Terrains";
+import { Types } from "@/features/educationProviders/components/Types";
 
 type FormData = z.infer<typeof CombinedFormSchema>;
 

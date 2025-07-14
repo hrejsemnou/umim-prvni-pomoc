@@ -1,6 +1,6 @@
 import BaseLayout from "@/app/baseLayout";
-import Navigation from "@/components/navigation";
-import Footer from "@/components/footer";
+import Navigation from "@/components/navigation/Navigation";
+import Footer from "@/components/Footer";
 import { siteMetadata } from "@/app/siteMetadata";
 
 export const metadata = siteMetadata;

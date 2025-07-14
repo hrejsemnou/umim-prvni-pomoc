@@ -3,7 +3,7 @@ import { supabase } from "@/lib/store/supabase";
 import {
   EducationProviderSelectType,
   EducationProviderInsertType,
-} from "@/types/EducationProvider";
+} from "@/features/educationProviders/types/EducationProvider";
 
 export const supabaseApi = createApi({
   reducerPath: "supabaseApi",
