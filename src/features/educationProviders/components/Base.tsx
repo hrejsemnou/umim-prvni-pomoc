@@ -2,7 +2,7 @@ import { Input } from "@/components/Input";
 
 export const Base = () => (
   <section>
-    <h2 className="text-lg font-bold text-left mb-4">Základní info</h2>
+    <h2 className="text-lg font-bold text-left mb-4">Jak se jmenujete?</h2>
     <Input
       name="name"
       type="text"

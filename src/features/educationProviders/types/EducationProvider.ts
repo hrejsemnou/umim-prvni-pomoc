@@ -14,24 +14,28 @@ export type EducationProviderSelectType =
       | Database["public"]["Tables"]["education_provider_focus"]["Row"]
       | null;
   } & {
-    education_provider_form:
-      | Database["public"]["Tables"]["education_provider_form"]["Row"]
+    education_provider_plurality:
+      | Database["public"]["Tables"]["education_provider_plurality"]["Row"]
+      | null;
+  } & {
+    education_provider_certifications:
+      | Database["public"]["Tables"]["education_provider_certifications"]["Row"]
       | null;
   } & {
     education_provider_locations:
       | Database["public"]["Tables"]["education_provider_locations"]["Row"]
       | null;
   } & {
-    education_provider_publicity:
-      | Database["public"]["Tables"]["education_provider_publicity"]["Row"]
+    education_provider_privacy:
+      | Database["public"]["Tables"]["education_provider_privacy"]["Row"]
       | null;
   } & {
     education_provider_targets:
       | Database["public"]["Tables"]["education_provider_targets"]["Row"]
       | null;
   } & {
-    education_provider_terrains:
-      | Database["public"]["Tables"]["education_provider_terrains"]["Row"]
+    education_provider_methods:
+      | Database["public"]["Tables"]["education_provider_methods"]["Row"]
       | null;
   } & {
     education_provider_types:
@@ -53,24 +57,28 @@ export type EducationProviderInsertType = {
     Database["public"]["Tables"]["education_provider_focus"]["Insert"],
     "education_provider_id"
   >;
-  form: Omit<
-    Database["public"]["Tables"]["education_provider_form"]["Insert"],
+  plurality: Omit<
+    Database["public"]["Tables"]["education_provider_plurality"]["Insert"],
+    "education_provider_id"
+  >;
+  certifications: Omit<
+    Database["public"]["Tables"]["education_provider_certifications"]["Insert"],
+    "education_provider_id"
+  >;
+  methods: Omit<
+    Database["public"]["Tables"]["education_provider_methods"]["Insert"],
     "education_provider_id"
   >;
   locations: Omit<
     Database["public"]["Tables"]["education_provider_locations"]["Insert"],
     "education_provider_id"
   >;
-  publicity: Omit<
-    Database["public"]["Tables"]["education_provider_publicity"]["Insert"],
+  privacy: Omit<
+    Database["public"]["Tables"]["education_provider_privacy"]["Insert"],
     "education_provider_id"
   >;
   targets: Omit<
     Database["public"]["Tables"]["education_provider_targets"]["Insert"],
-    "education_provider_id"
-  >;
-  terrains: Omit<
-    Database["public"]["Tables"]["education_provider_terrains"]["Insert"],
     "education_provider_id"
   >;
   types: Omit<

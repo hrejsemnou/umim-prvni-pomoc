@@ -6,9 +6,9 @@ const BaseSchema = z.object({
 });
 
 const AccessibilitySchema = z.object({
-  no_barriers: z.boolean().optional(),
-  hearing_impaired: z.boolean().optional(),
-  sight_impaired: z.boolean().optional(),
+  noBarriers: z.boolean().optional(),
+  hearingImpaired: z.boolean().optional(),
+  sightImpaired: z.boolean().optional(),
 });
 
 const ContactSchema = z.object({
@@ -16,19 +16,15 @@ const ContactSchema = z.object({
   facebook: z.string().optional(),
   instagram: z.string().optional(),
   phone: z.string().optional(),
-  websiteUrl: z.string().optional(),
+  websiteUrl: z.string().min(1, "Adresa webu nesmí být prázdná"),
 });
 
 const FocusSchema = z.object({
-  mountains: z.boolean().optional(),
+  outdoor: z.boolean().optional(),
   infants: z.boolean().optional(),
   waterside: z.boolean().optional(),
   paramedics: z.boolean().optional(),
-});
-
-const FormSchema = z.object({
-  live: z.boolean().optional(),
-  online: z.boolean().optional(),
+  elderly: z.boolean().optional(),
 });
 
 const LocationsSchema = z.object({
@@ -36,35 +32,45 @@ const LocationsSchema = z.object({
   region: z.string().optional(),
 });
 
-const PublicitySchema = z.object({
+const PrivacySchema = z.object({
   public: z.boolean().optional(),
   private: z.boolean().optional(),
 });
 
+const PluralitySchema = z.object({
+  individuals: z.boolean().optional(),
+  groups: z.boolean().optional(),
+});
+
 const TargetsSchema = z.object({
-  children: z.boolean().optional(),
+  pupils: z.boolean().optional(),
   adults: z.boolean().optional(),
   lectors: z.boolean().optional(),
   professionals: z.boolean().optional(),
-  elderly: z.boolean().optional(),
-  teams_driving_schools: z.boolean().optional(),
-  teams_schools: z.boolean().optional(),
-  teams_companies: z.boolean().optional(),
+  schools: z.boolean().optional(),
+  otherTargets: z.string().optional(),
 });
 
-const TerrainsSchema = z.object({
+const MethodsSchema = z.object({
   masking: z.boolean().optional(),
-  theory: z.boolean().optional(),
   vr: z.boolean().optional(),
 });
 
 const TypesSchema = z.object({
-  game: z.boolean().optional(),
-  book: z.boolean().optional(),
-  course: z.boolean().optional(),
+  courseLive: z.boolean().optional(),
+  courseOnline: z.boolean().optional(),
+  literature: z.boolean().optional(),
   podcast: z.boolean().optional(),
   event: z.boolean().optional(),
-  website: z.boolean().optional(),
+  application: z.boolean().optional(),
+  otherTypes: z.string().optional(),
+});
+
+const CertificationsSchema = z.object({
+  zza_msmt: z.boolean().optional(),
+  dvpp_msmt: z.boolean().optional(),
+  mpsv: z.boolean().optional(),
+  mzcr: z.boolean().optional(),
 });
 
 export const CombinedFormSchema = z.object({
@@ -72,10 +78,11 @@ export const CombinedFormSchema = z.object({
   ...AccessibilitySchema.shape,
   ...ContactSchema.shape,
   ...FocusSchema.shape,
-  ...FormSchema.shape,
   ...LocationsSchema.shape,
-  ...PublicitySchema.shape,
+  ...PrivacySchema.shape,
+  ...PluralitySchema.shape,
   ...TargetsSchema.shape,
-  ...TerrainsSchema.shape,
+  ...MethodsSchema.shape,
   ...TypesSchema.shape,
+  ...CertificationsSchema.shape,
 });

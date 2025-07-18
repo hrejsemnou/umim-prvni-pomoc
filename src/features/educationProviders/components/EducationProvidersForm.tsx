@@ -8,13 +8,14 @@ import { CombinedFormSchema } from "@/features/educationProviders/components/For
 import { Base } from "@/features/educationProviders/components/Base";
 import { Accessibility } from "@/features/educationProviders/components/Accessibility";
 import { Contact } from "@/features/educationProviders/components/Contact";
-import { Form } from "@/features/educationProviders/components/Form";
 import { Focus } from "@/features/educationProviders/components/Focus";
 import { Locations } from "@/features/educationProviders/components/Locations";
-import { Publicity } from "@/features/educationProviders/components/Publicity";
+import { Privacy } from "@/features/educationProviders/components/Privacy";
 import { Targets } from "@/features/educationProviders/components/Targets";
-import { Terrains } from "@/features/educationProviders/components/Terrains";
+import { Methods } from "@/features/educationProviders/components/Methods";
 import { Types } from "@/features/educationProviders/components/Types";
+import { Certifications } from "@/features/educationProviders/components/Certifications";
+import { Plurality } from "@/features/educationProviders/components/Plurality";
 
 type FormData = z.infer<typeof CombinedFormSchema>;
 
@@ -30,9 +31,9 @@ const EducationProvidersForm = () => {
     const combinedData = {
       base: { name: data.name, subname: data.subname, active: false },
       accessibility: {
-        no_barriers: data.no_barriers,
-        hearing_impaired: data.hearing_impaired,
-        sight_impaired: data.sight_impaired,
+        no_barriers: data.noBarriers,
+        hearing_impaired: data.hearingImpaired,
+        sight_impaired: data.sightImpaired,
       },
       contact: {
         email: data.email,
@@ -42,45 +43,50 @@ const EducationProvidersForm = () => {
         website: data.websiteUrl,
       },
       focus: {
-        mountains: data.mountains,
-        infants: data.infants,
+        children: data.infants,
+        elderly: data.elderly,
+        outdoor: data.outdoor,
         waterside: data.waterside,
         paramedics: data.paramedics,
-      },
-      form: {
-        live: data.live,
-        online: data.online,
       },
       locations: {
         everywhere: data.everywhere,
         region: data.region,
       },
-      publicity: {
+      privacy: {
         public: data.public,
         private: data.private,
       },
+      plurality: {
+        individuals: data.individuals,
+        groups: data.groups,
+      },
       targets: {
-        children: data.children,
+        children: data.pupils,
         adults: data.adults,
+        schools: data.schools,
         lectors: data.lectors,
         professionals: data.professionals,
-        elderly: data.elderly,
-        teams_driving_schools: data.teams_driving_schools,
-        teams_schools: data.teams_schools,
-        teams_companies: data.teams_companies,
+        other: data.otherTargets,
       },
-      terrains: {
+      methods: {
         masking: data.masking,
-        theory: data.theory,
         vr: data.vr,
       },
       types: {
-        game: data.game,
-        book: data.book,
-        course: data.course,
+        course_live: data.courseLive,
+        course_online: data.courseOnline,
+        literature: data.literature,
+        application: data.application,
         podcast: data.podcast,
         event: data.event,
-        website: data.website,
+        other: data.otherTypes,
+      },
+      certifications: {
+        zza_msmt: data.zza_msmt,
+        dvpp_msmt: data.dvpp_msmt,
+        mpsv: data.mpsv,
+        mzcr: data.mzcr,
       },
     };
     try {
@@ -120,19 +126,23 @@ const EducationProvidersForm = () => {
 
         <hr className="mb-6 mt-6" />
 
-        <Form />
-
-        <hr className="mb-6 mt-6" />
-
         <Locations />
 
         <hr className="mb-6 mt-6" />
 
-        <Publicity />
+        <Privacy />
 
         <hr className="mb-6 mt-6" />
 
-        <Terrains />
+        <Plurality />
+
+        <hr className="mb-6 mt-6" />
+
+        <Methods />
+
+        <hr className="mb-6 mt-6" />
+
+        <Certifications />
 
         <hr className="mb-6 mt-6" />
 

@@ -7,6 +7,11 @@ export type Json =
   | Json[];
 
 export type Database = {
+  // Allows to automatically instanciate createClient with right options
+  // instead of createClient<Database, { PostgrestVersion: 'XX' }>(URL, KEY)
+  __InternalSupabase: {
+    PostgrestVersion: "12.2.3 (519615d)";
+  };
   graphql_public: {
     Tables: {
       [_ in never]: never;
@@ -63,6 +68,38 @@ export type Database = {
           },
         ];
       };
+      education_provider_certifications: {
+        Row: {
+          dvpp_msmt: boolean;
+          education_provider_id: number;
+          mpsv: boolean;
+          mzcr: boolean;
+          zza_msmt: boolean;
+        };
+        Insert: {
+          dvpp_msmt?: boolean;
+          education_provider_id: number;
+          mpsv?: boolean;
+          mzcr?: boolean;
+          zza_msmt?: boolean;
+        };
+        Update: {
+          dvpp_msmt?: boolean;
+          education_provider_id?: number;
+          mpsv?: boolean;
+          mzcr?: boolean;
+          zza_msmt?: boolean;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "education_provider_certifications_education_provider_id_fkey";
+            columns: ["education_provider_id"];
+            isOneToOne: true;
+            referencedRelation: "education_providers";
+            referencedColumns: ["id"];
+          },
+        ];
+      };
       education_provider_contact: {
         Row: {
           education_provider_id: number;
@@ -100,55 +137,32 @@ export type Database = {
       };
       education_provider_focus: {
         Row: {
+          children: boolean;
           education_provider_id: number;
-          infants: boolean;
-          mountains: boolean;
+          elderly: boolean;
+          outdoor: boolean;
           paramedics: boolean;
           waterside: boolean;
         };
         Insert: {
+          children?: boolean;
           education_provider_id: number;
-          infants?: boolean;
-          mountains?: boolean;
+          elderly?: boolean;
+          outdoor?: boolean;
           paramedics?: boolean;
           waterside?: boolean;
         };
         Update: {
+          children?: boolean;
           education_provider_id?: number;
-          infants?: boolean;
-          mountains?: boolean;
+          elderly?: boolean;
+          outdoor?: boolean;
           paramedics?: boolean;
           waterside?: boolean;
         };
         Relationships: [
           {
             foreignKeyName: "education_provider_focus_education_provider_id_fkey";
-            columns: ["education_provider_id"];
-            isOneToOne: true;
-            referencedRelation: "education_providers";
-            referencedColumns: ["id"];
-          },
-        ];
-      };
-      education_provider_form: {
-        Row: {
-          education_provider_id: number;
-          live: boolean;
-          online: boolean;
-        };
-        Insert: {
-          education_provider_id: number;
-          live?: boolean;
-          online?: boolean;
-        };
-        Update: {
-          education_provider_id?: number;
-          live?: boolean;
-          online?: boolean;
-        };
-        Relationships: [
-          {
-            foreignKeyName: "education_provider_form_education_provider_id_fkey";
             columns: ["education_provider_id"];
             isOneToOne: true;
             referencedRelation: "education_providers";
@@ -182,7 +196,59 @@ export type Database = {
           },
         ];
       };
-      education_provider_publicity: {
+      education_provider_methods: {
+        Row: {
+          education_provider_id: number;
+          masking: boolean;
+          vr: boolean;
+        };
+        Insert: {
+          education_provider_id: number;
+          masking?: boolean;
+          vr?: boolean;
+        };
+        Update: {
+          education_provider_id?: number;
+          masking?: boolean;
+          vr?: boolean;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "education_provider_terrains_education_provider_id_fkey";
+            columns: ["education_provider_id"];
+            isOneToOne: true;
+            referencedRelation: "education_providers";
+            referencedColumns: ["id"];
+          },
+        ];
+      };
+      education_provider_plurality: {
+        Row: {
+          education_provider_id: number;
+          groups: boolean;
+          individuals: boolean;
+        };
+        Insert: {
+          education_provider_id: number;
+          groups?: boolean;
+          individuals?: boolean;
+        };
+        Update: {
+          education_provider_id?: number;
+          groups?: boolean;
+          individuals?: boolean;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "education_provider_plurality_education_provider_id_fkey";
+            columns: ["education_provider_id"];
+            isOneToOne: true;
+            referencedRelation: "education_providers";
+            referencedColumns: ["id"];
+          },
+        ];
+      };
+      education_provider_privacy: {
         Row: {
           education_provider_id: number;
           private: boolean;
@@ -213,34 +279,28 @@ export type Database = {
           adults: boolean;
           children: boolean;
           education_provider_id: number;
-          elderly: boolean;
           lectors: boolean;
+          other: string;
           professionals: boolean;
-          teams_companies: boolean;
-          teams_driving_schools: boolean;
-          teams_schools: boolean;
+          schools: boolean;
         };
         Insert: {
           adults?: boolean;
           children?: boolean;
           education_provider_id: number;
-          elderly?: boolean;
           lectors?: boolean;
+          other?: string;
           professionals?: boolean;
-          teams_companies?: boolean;
-          teams_driving_schools?: boolean;
-          teams_schools?: boolean;
+          schools?: boolean;
         };
         Update: {
           adults?: boolean;
           children?: boolean;
           education_provider_id?: number;
-          elderly?: boolean;
           lectors?: boolean;
+          other?: string;
           professionals?: boolean;
-          teams_companies?: boolean;
-          teams_driving_schools?: boolean;
-          teams_schools?: boolean;
+          schools?: boolean;
         };
         Relationships: [
           {
@@ -252,62 +312,36 @@ export type Database = {
           },
         ];
       };
-      education_provider_terrains: {
-        Row: {
-          education_provider_id: number;
-          masking: boolean;
-          theory: boolean;
-          vr: boolean;
-        };
-        Insert: {
-          education_provider_id: number;
-          masking?: boolean;
-          theory?: boolean;
-          vr?: boolean;
-        };
-        Update: {
-          education_provider_id?: number;
-          masking?: boolean;
-          theory?: boolean;
-          vr?: boolean;
-        };
-        Relationships: [
-          {
-            foreignKeyName: "education_provider_terrains_education_provider_id_fkey";
-            columns: ["education_provider_id"];
-            isOneToOne: true;
-            referencedRelation: "education_providers";
-            referencedColumns: ["id"];
-          },
-        ];
-      };
       education_provider_types: {
         Row: {
-          book: boolean;
-          course: boolean;
+          application: boolean;
+          course_live: boolean;
+          course_online: boolean;
           education_provider_id: number;
           event: boolean;
-          game: boolean;
+          literature: boolean;
+          other: string;
           podcast: boolean;
-          website: boolean;
         };
         Insert: {
-          book?: boolean;
-          course?: boolean;
+          application?: boolean;
+          course_live?: boolean;
+          course_online?: boolean;
           education_provider_id: number;
           event?: boolean;
-          game?: boolean;
+          literature?: boolean;
+          other?: string;
           podcast?: boolean;
-          website?: boolean;
         };
         Update: {
-          book?: boolean;
-          course?: boolean;
+          application?: boolean;
+          course_live?: boolean;
+          course_online?: boolean;
           education_provider_id?: number;
           event?: boolean;
-          game?: boolean;
+          literature?: boolean;
+          other?: string;
           podcast?: boolean;
-          website?: boolean;
         };
         Relationships: [
           {
@@ -363,28 +397,32 @@ export type Database = {
             Database["public"]["Tables"]["education_provider_focus"]["Insert"],
             "education_provider_id"
           >;
-          form: Omit<
-            Database["public"]["Tables"]["education_provider_form"]["Insert"],
-            "education_provider_id"
-          >;
           locations: Omit<
             Database["public"]["Tables"]["education_provider_locations"]["Insert"],
             "education_provider_id"
           >;
-          publicity: Omit<
-            Database["public"]["Tables"]["education_provider_publicity"]["Insert"],
+          privacy: Omit<
+            Database["public"]["Tables"]["education_provider_privacy"]["Insert"],
             "education_provider_id"
           >;
           targets: Omit<
             Database["public"]["Tables"]["education_provider_targets"]["Insert"],
             "education_provider_id"
           >;
-          terrains: Omit<
-            Database["public"]["Tables"]["education_provider_terrains"]["Insert"],
+          methods: Omit<
+            Database["public"]["Tables"]["education_provider_methods"]["Insert"],
             "education_provider_id"
           >;
           types: Omit<
             Database["public"]["Tables"]["education_provider_types"]["Insert"],
+            "education_provider_id"
+          >;
+          plurality: Omit<
+            Database["public"]["Tables"]["education_provider_plurality"]["Insert"],
+            "education_provider_id"
+          >;
+          certifications: Omit<
+            Database["public"]["Tables"]["education_provider_certifications"]["Insert"],
             "education_provider_id"
           >;
         };
@@ -400,21 +438,28 @@ export type Database = {
   };
 };
 
-type DefaultSchema = Database[Extract<keyof Database, "public">];
+type DatabaseWithoutInternals = Omit<Database, "__InternalSupabase">;
+
+type DefaultSchema = DatabaseWithoutInternals[Extract<
+  keyof Database,
+  "public"
+>];
 
 export type Tables<
   DefaultSchemaTableNameOrOptions extends
     | keyof (DefaultSchema["Tables"] & DefaultSchema["Views"])
-    | { schema: keyof Database },
+    | { schema: keyof DatabaseWithoutInternals },
   TableName extends DefaultSchemaTableNameOrOptions extends {
-    schema: keyof Database;
+    schema: keyof DatabaseWithoutInternals;
   }
-    ? keyof (Database[DefaultSchemaTableNameOrOptions["schema"]]["Tables"] &
-        Database[DefaultSchemaTableNameOrOptions["schema"]]["Views"])
+    ? keyof (DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"] &
+        DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Views"])
     : never = never,
-> = DefaultSchemaTableNameOrOptions extends { schema: keyof Database }
-  ? (Database[DefaultSchemaTableNameOrOptions["schema"]]["Tables"] &
-      Database[DefaultSchemaTableNameOrOptions["schema"]]["Views"])[TableName] extends {
+> = DefaultSchemaTableNameOrOptions extends {
+  schema: keyof DatabaseWithoutInternals;
+}
+  ? (DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"] &
+      DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Views"])[TableName] extends {
       Row: infer R;
     }
     ? R
@@ -432,14 +477,16 @@ export type Tables<
 export type TablesInsert<
   DefaultSchemaTableNameOrOptions extends
     | keyof DefaultSchema["Tables"]
-    | { schema: keyof Database },
+    | { schema: keyof DatabaseWithoutInternals },
   TableName extends DefaultSchemaTableNameOrOptions extends {
-    schema: keyof Database;
+    schema: keyof DatabaseWithoutInternals;
   }
-    ? keyof Database[DefaultSchemaTableNameOrOptions["schema"]]["Tables"]
+    ? keyof DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"]
     : never = never,
-> = DefaultSchemaTableNameOrOptions extends { schema: keyof Database }
-  ? Database[DefaultSchemaTableNameOrOptions["schema"]]["Tables"][TableName] extends {
+> = DefaultSchemaTableNameOrOptions extends {
+  schema: keyof DatabaseWithoutInternals;
+}
+  ? DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"][TableName] extends {
       Insert: infer I;
     }
     ? I
@@ -455,14 +502,16 @@ export type TablesInsert<
 export type TablesUpdate<
   DefaultSchemaTableNameOrOptions extends
     | keyof DefaultSchema["Tables"]
-    | { schema: keyof Database },
+    | { schema: keyof DatabaseWithoutInternals },
   TableName extends DefaultSchemaTableNameOrOptions extends {
-    schema: keyof Database;
+    schema: keyof DatabaseWithoutInternals;
   }
-    ? keyof Database[DefaultSchemaTableNameOrOptions["schema"]]["Tables"]
+    ? keyof DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"]
     : never = never,
-> = DefaultSchemaTableNameOrOptions extends { schema: keyof Database }
-  ? Database[DefaultSchemaTableNameOrOptions["schema"]]["Tables"][TableName] extends {
+> = DefaultSchemaTableNameOrOptions extends {
+  schema: keyof DatabaseWithoutInternals;
+}
+  ? DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"][TableName] extends {
       Update: infer U;
     }
     ? U
@@ -478,14 +527,16 @@ export type TablesUpdate<
 export type Enums<
   DefaultSchemaEnumNameOrOptions extends
     | keyof DefaultSchema["Enums"]
-    | { schema: keyof Database },
+    | { schema: keyof DatabaseWithoutInternals },
   EnumName extends DefaultSchemaEnumNameOrOptions extends {
-    schema: keyof Database;
+    schema: keyof DatabaseWithoutInternals;
   }
-    ? keyof Database[DefaultSchemaEnumNameOrOptions["schema"]]["Enums"]
+    ? keyof DatabaseWithoutInternals[DefaultSchemaEnumNameOrOptions["schema"]]["Enums"]
     : never = never,
-> = DefaultSchemaEnumNameOrOptions extends { schema: keyof Database }
-  ? Database[DefaultSchemaEnumNameOrOptions["schema"]]["Enums"][EnumName]
+> = DefaultSchemaEnumNameOrOptions extends {
+  schema: keyof DatabaseWithoutInternals;
+}
+  ? DatabaseWithoutInternals[DefaultSchemaEnumNameOrOptions["schema"]]["Enums"][EnumName]
   : DefaultSchemaEnumNameOrOptions extends keyof DefaultSchema["Enums"]
     ? DefaultSchema["Enums"][DefaultSchemaEnumNameOrOptions]
     : never;
@@ -493,14 +544,16 @@ export type Enums<
 export type CompositeTypes<
   PublicCompositeTypeNameOrOptions extends
     | keyof DefaultSchema["CompositeTypes"]
-    | { schema: keyof Database },
+    | { schema: keyof DatabaseWithoutInternals },
   CompositeTypeName extends PublicCompositeTypeNameOrOptions extends {
-    schema: keyof Database;
+    schema: keyof DatabaseWithoutInternals;
   }
-    ? keyof Database[PublicCompositeTypeNameOrOptions["schema"]]["CompositeTypes"]
+    ? keyof DatabaseWithoutInternals[PublicCompositeTypeNameOrOptions["schema"]]["CompositeTypes"]
     : never = never,
-> = PublicCompositeTypeNameOrOptions extends { schema: keyof Database }
-  ? Database[PublicCompositeTypeNameOrOptions["schema"]]["CompositeTypes"][CompositeTypeName]
+> = PublicCompositeTypeNameOrOptions extends {
+  schema: keyof DatabaseWithoutInternals;
+}
+  ? DatabaseWithoutInternals[PublicCompositeTypeNameOrOptions["schema"]]["CompositeTypes"][CompositeTypeName]
   : PublicCompositeTypeNameOrOptions extends keyof DefaultSchema["CompositeTypes"]
     ? DefaultSchema["CompositeTypes"][PublicCompositeTypeNameOrOptions]
     : never;

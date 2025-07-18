@@ -1,13 +1,30 @@
 import { Input } from "@/components/Input";
 
+//TODO: Add info
+//TODO: Add masking courses conditionaly
 export const Focus = () => (
   <section>
-    <h2 className="text-lg font-bold text-left mb-4">Zaměření</h2>
+    <h2 className="text-lg font-bold text-left mb-4">
+      Je Vaše vzdělávání na něco zaměřené?
+    </h2>
     <div className="flex gap-4 flex-wrap">
-      <Input name="mountains" type="checkbox" label="Hory" />
-      <Input name="infants" type="checkbox" label="Děti" />
-      <Input name="waterside" type="checkbox" label="Voda" />
-      <Input name="paramedics" type="checkbox" label="Záchranáři" />
+      <Input
+        name="infants"
+        type="checkbox"
+        label="První pomoc pro děti a miminka"
+      />
+      <Input name="elderly" type="checkbox" label="První pomoc pro seniory" />
+      <Input name="outdoor" type="checkbox" label="Hory, turistika" />
+      <Input
+        name="waterside"
+        type="checkbox"
+        label="Vodní záchranář, plavčík"
+      />
+      <Input
+        name="paramedics"
+        type="checkbox"
+        label="Zdravotník zotavovacích akcí"
+      />
     </div>
   </section>
 );

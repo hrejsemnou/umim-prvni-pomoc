@@ -24,6 +24,10 @@ describe("EducationProvidersForm", () => {
       target: { value: "test@example.com" },
     });
 
+    fireEvent.change(screen.getByLabelText("Web*"), {
+      target: { value: "test.example.com" },
+    });
+
     fireEvent.click(screen.getByRole("button", { name: "Odeslat" }));
 
     await waitFor(() => {
@@ -56,6 +60,10 @@ describe("EducationProvidersForm", () => {
       target: { value: "test@example.com" },
     });
 
+    fireEvent.change(screen.getByLabelText("Web*"), {
+      target: { value: "test.example.com" },
+    });
+
     fireEvent.click(screen.getByRole("button", { name: "Odeslat" }));
 
     await waitFor(() => {
@@ -73,6 +81,37 @@ describe("EducationProvidersForm", () => {
 
     fireEvent.change(screen.getByLabelText("Název*"), {
       target: { value: "Testovací Název" },
+    });
+
+    fireEvent.change(screen.getByLabelText("Telefon"), {
+      target: { value: "222444888" },
+    });
+
+    fireEvent.change(screen.getByLabelText("Web*"), {
+      target: { value: "test.example.com" },
+    });
+
+    fireEvent.click(screen.getByRole("button", { name: "Odeslat" }));
+
+    await waitFor(() => {
+      expect(mockAdd).not.toHaveBeenCalled();
+    });
+  });
+
+  it("doesn't submit the form if website url is missing", async () => {
+    const mockAdd = jest.fn(() => ({
+      unwrap: jest.fn().mockResolvedValue({}),
+    }));
+    (useAddEducationProviderMutation as jest.Mock).mockReturnValue([mockAdd]);
+
+    render(<EducationProvidersForm />);
+
+    fireEvent.change(screen.getByLabelText("Název*"), {
+      target: { value: "Testovací Název" },
+    });
+
+    fireEvent.change(screen.getByLabelText("Email*"), {
+      target: { value: "test@example.com" },
     });
 
     fireEvent.change(screen.getByLabelText("Telefon"), {
