@@ -1,13 +1,13 @@
 import { createApi, fakeBaseQuery } from "@reduxjs/toolkit/query/react";
-import { supabase } from "@/lib/store/supabase";
+import { supabase } from "@/lib/supabase/client";
 import {
   EducationProviderSelectType,
   EducationProviderInsertType,
 } from "@/features/educationProviders/types/EducationProvider";
 
-export const supabaseApi = createApi({
+export const api = createApi({
   reducerPath: "supabaseApi",
-  baseQuery: fakeBaseQuery(), // since we're using Supabase client directly
+  baseQuery: fakeBaseQuery(),
   endpoints: (build) => ({
     getEducationProviders: build.query<EducationProviderSelectType[], void>({
       queryFn: async () => {
@@ -18,11 +18,12 @@ export const supabaseApi = createApi({
             education_provider_accessibility(*), \
             education_provider_contact(*), \
             education_provider_focus(*), \
-            education_provider_form(*), \
             education_provider_locations(*), \
-            education_provider_publicity(*), \
+            education_provider_privacy(*), \
             education_provider_targets(*), \
-            education_provider_terrains(*), \
+            education_provider_certifications(*), \
+            education_provider_plurality(*), \
+            education_provider_methods(*), \
             education_provider_types(*)",
           );
         if (error) {
@@ -73,4 +74,4 @@ export const supabaseApi = createApi({
 export const {
   useGetEducationProvidersQuery,
   useAddEducationProviderMutation,
-} = supabaseApi;
+} = api;

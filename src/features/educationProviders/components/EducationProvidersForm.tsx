@@ -1,5 +1,5 @@
 "use client";
-import { useAddEducationProviderMutation } from "@/lib/store/supabaseApi";
+import { useAddEducationProviderMutation } from "@/lib/store/api";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";

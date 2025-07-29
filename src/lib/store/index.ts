@@ -1,12 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { supabaseApi } from "@/lib/store/supabaseApi";
+import { api } from "@/lib/store/api";
 
 export const store = configureStore({
   reducer: {
-    [supabaseApi.reducerPath]: supabaseApi.reducer,
+    [api.reducerPath]: api.reducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(supabaseApi.middleware),
+    getDefaultMiddleware().concat(api.middleware),
 });
 
 export type RootState = ReturnType<typeof store.getState>;
