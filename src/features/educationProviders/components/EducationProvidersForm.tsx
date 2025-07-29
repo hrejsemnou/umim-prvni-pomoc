@@ -6,7 +6,6 @@ import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 import * as z from "zod";
 import { CombinedFormSchema } from "@/features/educationProviders/components/FormSchemas";
 import { Base } from "@/features/educationProviders/components/Base";
-import { Accessibility } from "@/features/educationProviders/components/Accessibility";
 import { Contact } from "@/features/educationProviders/components/Contact";
 import { Focus } from "@/features/educationProviders/components/Focus";
 import { Locations } from "@/features/educationProviders/components/Locations";
@@ -31,9 +30,9 @@ const EducationProvidersForm = () => {
     const combinedData = {
       base: { name: data.name, subname: data.subname, active: false },
       accessibility: {
-        no_barriers: data.noBarriers,
-        hearing_impaired: data.hearingImpaired,
-        sight_impaired: data.sightImpaired,
+        no_barriers: false,
+        hearing_impaired: false,
+        sight_impaired: false,
       },
       contact: {
         email: data.email,
@@ -50,16 +49,16 @@ const EducationProvidersForm = () => {
         paramedics: data.paramedics,
       },
       locations: {
-        everywhere: data.everywhere,
-        region: data.region,
+        everywhere: data.everywhere ?? false,
+        region: data.region ?? "",
       },
       privacy: {
-        public: data.public,
-        private: data.private,
+        public: data.public ?? false,
+        private: data.private ?? false,
       },
       plurality: {
-        individuals: data.individuals,
-        groups: data.groups,
+        individuals: data.individuals ?? false,
+        groups: data.groups ?? false,
       },
       targets: {
         children: data.pupils,
@@ -70,8 +69,8 @@ const EducationProvidersForm = () => {
         other: data.otherTargets,
       },
       methods: {
-        masking: data.masking,
-        vr: data.vr,
+        masking: data.masking ?? false,
+        vr: data.vr ?? false,
       },
       types: {
         course_live: data.courseLive,
@@ -96,11 +95,14 @@ const EducationProvidersForm = () => {
     }
   };
 
+  const courseLiveValue = methods.watch("courseLive");
+  const courseOnlineValue = methods.watch("courseOnline");
+
   return (
     <FormProvider {...methods}>
       <form
         onSubmit={methods.handleSubmit(onSubmit)}
-        className="flex flex-col gap-2 px-6 py-6 sm:border-[1px] sm:rounded-2xl"
+        className="flex max-w-xl flex-col gap-2 px-6 py-6 sm:border-[1px] sm:rounded-2xl"
       >
         <Base />
 
@@ -118,29 +120,32 @@ const EducationProvidersForm = () => {
 
         <hr className="mb-6 mt-6" />
 
-        <Accessibility />
-
-        <hr className="mb-6 mt-6" />
-
         <Focus />
 
         <hr className="mb-6 mt-6" />
 
-        <Locations />
+        {courseLiveValue && (
+          <>
+            <Locations />
 
-        <hr className="mb-6 mt-6" />
+            <hr className="mb-6 mt-6" />
+          </>
+        )}
+        {(courseLiveValue || courseOnlineValue) && (
+          <>
+            <Privacy />
 
-        <Privacy />
+            <hr className="mb-6 mt-6" />
 
-        <hr className="mb-6 mt-6" />
+            <Plurality />
 
-        <Plurality />
+            <hr className="mb-6 mt-6" />
 
-        <hr className="mb-6 mt-6" />
+            <Methods />
 
-        <Methods />
-
-        <hr className="mb-6 mt-6" />
+            <hr className="mb-6 mt-6" />
+          </>
+        )}
 
         <Certifications />
 
