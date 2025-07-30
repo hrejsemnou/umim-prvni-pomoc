@@ -3,6 +3,28 @@ import EducationProvidersForm from "@/features/educationProviders/components/Edu
 import "@testing-library/jest-dom";
 import { useAddEducationProviderMutation } from "@/lib/store/api";
 
+async function goToFinalStep() {
+  while (!screen.queryByRole("button", { name: "Odeslat" })) {
+    const nextButton = screen.queryByRole("button", { name: "Další" });
+    if (!nextButton) throw new Error('"Další" button not found');
+    fireEvent.click(nextButton);
+
+    await waitFor(() =>
+      expect(
+        screen.queryByRole("button", { name: "Další" }),
+      ).toBeInTheDocument(),
+    );
+  }
+}
+
+// Mock implementation of window.scrollTo
+const windowMock = {
+  scrollTo: jest.fn(),
+};
+
+// Assign the mock to the global object
+Object.assign(global, windowMock);
+
 jest.mock("@/lib/store/api", () => ({
   useAddEducationProviderMutation: jest.fn(),
 }));
@@ -20,6 +42,12 @@ describe("EducationProvidersForm", () => {
       target: { value: "Testovací Název" },
     });
 
+    fireEvent.click(screen.getByRole("button", { name: "Další" }));
+
+    await waitFor(() => {
+      expect(screen.queryByLabelText("Email*")).toBeInTheDocument();
+    });
+
     fireEvent.change(screen.getByLabelText("Email*"), {
       target: { value: "test@example.com" },
     });
@@ -27,6 +55,8 @@ describe("EducationProvidersForm", () => {
     fireEvent.change(screen.getByLabelText("Web*"), {
       target: { value: "test.example.com" },
     });
+
+    await goToFinalStep();
 
     fireEvent.click(screen.getByRole("button", { name: "Odeslat" }));
 
@@ -38,13 +68,16 @@ describe("EducationProvidersForm", () => {
             subname: "",
             active: false,
           }),
-          contact: expect.objectContaining({ email: "test@example.com" }),
+          contact: expect.objectContaining({
+            email: "test@example.com",
+            website: "test.example.com",
+          }),
         }),
       );
     });
   });
 
-  it("doesn't submit the form if name is missing", async () => {
+  it("doesn't allow going to the next step if name is missing", async () => {
     const mockAdd = jest.fn(() => ({
       unwrap: jest.fn().mockResolvedValue({}),
     }));
@@ -56,22 +89,16 @@ describe("EducationProvidersForm", () => {
       target: { value: "Testovací Podnázev" },
     });
 
-    fireEvent.change(screen.getByLabelText("Email*"), {
-      target: { value: "test@example.com" },
-    });
-
-    fireEvent.change(screen.getByLabelText("Web*"), {
-      target: { value: "test.example.com" },
-    });
-
-    fireEvent.click(screen.getByRole("button", { name: "Odeslat" }));
+    fireEvent.click(screen.getByRole("button", { name: "Další" }));
 
     await waitFor(() => {
-      expect(mockAdd).not.toHaveBeenCalled();
+      expect(screen.queryByLabelText("Název*")).toBeInTheDocument();
     });
+
+    expect(screen.queryByLabelText("Email*")).not.toBeInTheDocument();
   });
 
-  it("doesn't submit the form if email is missing", async () => {
+  it("doesn't allow going to the next step if email is missing", async () => {
     const mockAdd = jest.fn(() => ({
       unwrap: jest.fn().mockResolvedValue({}),
     }));
@@ -83,19 +110,24 @@ describe("EducationProvidersForm", () => {
       target: { value: "Testovací Název" },
     });
 
-    fireEvent.change(screen.getByLabelText("Telefon"), {
-      target: { value: "222444888" },
+    fireEvent.click(screen.getByRole("button", { name: "Další" }));
+
+    await waitFor(() => {
+      expect(screen.queryByLabelText("Email*")).toBeInTheDocument();
     });
 
     fireEvent.change(screen.getByLabelText("Web*"), {
       target: { value: "test.example.com" },
     });
 
-    fireEvent.click(screen.getByRole("button", { name: "Odeslat" }));
+    fireEvent.click(screen.getByRole("button", { name: "Další" }));
 
     await waitFor(() => {
-      expect(mockAdd).not.toHaveBeenCalled();
+      expect(screen.queryByLabelText("Email*")).toBeInTheDocument();
+      expect(screen.queryByLabelText("Web*")).toBeInTheDocument();
     });
+
+    expect(screen.queryByLabelText("Kurzy živě")).not.toBeInTheDocument();
   });
 
   it("doesn't submit the form if website url is missing", async () => {
@@ -110,18 +142,23 @@ describe("EducationProvidersForm", () => {
       target: { value: "Testovací Název" },
     });
 
+    fireEvent.click(screen.getByRole("button", { name: "Další" }));
+
+    await waitFor(() => {
+      expect(screen.queryByLabelText("Email*")).toBeInTheDocument();
+    });
+
     fireEvent.change(screen.getByLabelText("Email*"), {
       target: { value: "test@example.com" },
     });
 
-    fireEvent.change(screen.getByLabelText("Telefon"), {
-      target: { value: "222444888" },
-    });
-
-    fireEvent.click(screen.getByRole("button", { name: "Odeslat" }));
+    fireEvent.click(screen.getByRole("button", { name: "Další" }));
 
     await waitFor(() => {
-      expect(mockAdd).not.toHaveBeenCalled();
+      expect(screen.queryByLabelText("Email*")).toBeInTheDocument();
+      expect(screen.queryByLabelText("Web*")).toBeInTheDocument();
     });
+
+    expect(screen.queryByLabelText("Kurzy živě")).not.toBeInTheDocument();
   });
 });

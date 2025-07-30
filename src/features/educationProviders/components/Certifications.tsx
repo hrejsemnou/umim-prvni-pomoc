@@ -5,7 +5,7 @@ export const Certifications = () => (
     <h2 className="text-lg font-bold text-left mb-8">
       Mají Vaše kurzy nějakou specifickou akreditaci?
     </h2>
-    <div className="flex gap-8 flex-wrap">
+    <div className="flex gap-4 flex-col mb-6">
       <Input
         name="zza_msmt"
         type="checkbox"

@@ -38,10 +38,12 @@ export const Input = (props: InputProps) => {
           props.type === "checkbox" ? "order-1" : "order-2",
         )}
       />
-      {formState.errors[props.name] && (
+      {formState.errors[props.name] ? (
         <span className="text-accent self-start order-3">
           {formState.errors[props.name]?.message?.toString()}
         </span>
+      ) : (
+        <span className="min-h-6 order-3" />
       )}
     </div>
   );

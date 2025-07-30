@@ -5,7 +5,7 @@ export const Plurality = () => (
     <h2 className="text-lg font-bold text-left mb-8">
       Nabízíte kurzy pro jednotlivce nebo pro skupiny?
     </h2>
-    <div className="flex gap-4 flex-wrap">
+    <div className="flex gap-4 flex-col mb-6">
       <Input name="individuals" type="checkbox" label="Jednotlivci" />
       <Input name="groups" type="checkbox" label="Skupiny" />
     </div>

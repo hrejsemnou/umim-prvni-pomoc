@@ -4,7 +4,20 @@ import { zodResolver } from "@hookform/resolvers/zod";
 
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 import * as z from "zod";
-import { CombinedFormSchema } from "@/features/educationProviders/components/FormSchemas";
+import {
+  BaseSchema,
+  CertificationsSchema,
+  CombinedFormSchema,
+  ContactSchema,
+  FocusSchema,
+  getKeys,
+  LocationsSchema,
+  MethodsSchema,
+  PluralitySchema,
+  PrivacySchema,
+  TargetsSchema,
+  TypesSchema,
+} from "@/features/educationProviders/components/FormSchemas";
 import { Base } from "@/features/educationProviders/components/Base";
 import { Contact } from "@/features/educationProviders/components/Contact";
 import { Focus } from "@/features/educationProviders/components/Focus";
@@ -15,7 +28,8 @@ import { Methods } from "@/features/educationProviders/components/Methods";
 import { Types } from "@/features/educationProviders/components/Types";
 import { Certifications } from "@/features/educationProviders/components/Certifications";
 import { Plurality } from "@/features/educationProviders/components/Plurality";
-import { useState } from "react";
+import { ReactElement, useState } from "react";
+import clsx from "clsx";
 
 type FormData = z.infer<typeof CombinedFormSchema>;
 
@@ -28,6 +42,7 @@ const EducationProvidersForm = () => {
   const [addEducationProvider] = useAddEducationProviderMutation();
 
   const [formSent, setFormSent] = useState<boolean>(false);
+  const [step, setStep] = useState(0);
 
   const onSubmit: SubmitHandler<FormData> = async (data: FormData) => {
     const combinedData = {
@@ -98,6 +113,71 @@ const EducationProvidersForm = () => {
   const courseLiveValue = methods.watch("courseLive");
   const courseOnlineValue = methods.watch("courseOnline");
 
+  const steps: {
+    id: number;
+    component: ReactElement;
+    fields: (keyof FormData)[];
+  }[] = [
+    {
+      id: 0,
+      component: <Base />,
+      fields: getKeys(BaseSchema.shape),
+    },
+    {
+      id: 1,
+      component: <Contact />,
+      fields: getKeys(ContactSchema.shape),
+    },
+    {
+      id: 2,
+      component: <Types />,
+      fields: getKeys(TypesSchema.shape),
+    },
+    {
+      id: 3,
+      component: <Targets />,
+      fields: getKeys(TargetsSchema.shape),
+    },
+    {
+      id: 4,
+      component: <Focus />,
+      fields: getKeys(FocusSchema.shape),
+    },
+    ...(courseLiveValue
+      ? [
+          {
+            id: 5,
+            component: <Locations />,
+            fields: getKeys(LocationsSchema.shape),
+          },
+        ]
+      : []),
+    ...(courseLiveValue || courseOnlineValue
+      ? [
+          {
+            id: 6,
+            component: <Privacy />,
+            fields: getKeys(PrivacySchema.shape),
+          },
+          {
+            id: 7,
+            component: <Plurality />,
+            fields: getKeys(PluralitySchema.shape),
+          },
+          {
+            id: 8,
+            component: <Methods />,
+            fields: getKeys(MethodsSchema.shape),
+          },
+        ]
+      : []),
+    {
+      id: 9,
+      component: <Certifications />,
+      fields: getKeys(CertificationsSchema.shape),
+    },
+  ];
+
   if (formSent) {
     return (
       <div>
@@ -109,61 +189,55 @@ const EducationProvidersForm = () => {
       <FormProvider {...methods}>
         <form
           onSubmit={methods.handleSubmit(onSubmit)}
-          className="flex max-w-xl flex-col gap-2 px-6 py-6 sm:border-[1px] sm:rounded-2xl"
+          className="flex w-lg flex-col gap-2 px-6 py-6 sm:border-[1px] sm:rounded-2xl"
         >
-          <Base />
+          <p className="mb-4">
+            Krok: {step + 1} / {steps.length}
+          </p>
+          {steps[step].component}
 
-          <hr className="mb-6 mt-6" />
-
-          <Contact />
-
-          <hr className="mb-6 mt-6" />
-
-          <Types />
-
-          <hr className="mb-6 mt-6" />
-
-          <Targets />
-
-          <hr className="mb-6 mt-6" />
-
-          <Focus />
-
-          <hr className="mb-6 mt-6" />
-
-          {courseLiveValue && (
-            <>
-              <Locations />
-
-              <hr className="mb-6 mt-6" />
-            </>
-          )}
-          {(courseLiveValue || courseOnlineValue) && (
-            <>
-              <Privacy />
-
-              <hr className="mb-6 mt-6" />
-
-              <Plurality />
-
-              <hr className="mb-6 mt-6" />
-
-              <Methods />
-
-              <hr className="mb-6 mt-6" />
-            </>
-          )}
-
-          <Certifications />
-
-          <hr className="mb-6 mt-6" />
-
-          <button
-            type="submit"
-            className="text-background font-bold color-foreground self-center bg-primary rounded-[8px] py-2 px-4 disabled:opacity-50 hover:bg-accent cursor-pointer"
+          <div
+            className={clsx(
+              "flex",
+              step === 0 ? "justify-end" : "justify-between",
+            )}
           >
-            Odeslat
-          </button>
+            {step > 0 && (
+              <button
+                className="text-background font-bold color-foreground bg-accent rounded-[8px] py-2 px-4 disabled:opacity-50 cursor-pointer"
+                type="button"
+                onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
+                  e.preventDefault();
+                  setStep(step - 1);
+                }}
+              >
+                Zpět
+              </button>
+            )}
+
+            {step < steps.length - 1 ? (
+              <button
+                className="text-background font-bold color-foreground bg-primary rounded-[8px] py-2 px-4 disabled:opacity-50 cursor-pointer"
+                type="button"
+                onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
+                  e.preventDefault();
+                  const fieldsToValidate = steps[step].fields;
+                  methods.trigger(fieldsToValidate).then((valid) => {
+                    if (valid) setStep(step + 1);
+                  });
+                }}
+              >
+                Další
+              </button>
+            ) : (
+              <button
+                type="submit"
+                className="text-background font-bold color-foreground bg-primary rounded-[8px] py-2 px-4 disabled:opacity-50 cursor-pointer"
+              >
+                Odeslat
+              </button>
+            )}
+          </div>
         </form>
       </FormProvider>
     );

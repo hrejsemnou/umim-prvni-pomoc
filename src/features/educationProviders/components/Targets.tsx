@@ -6,7 +6,7 @@ export const Targets = () => (
     <h2 className="text-lg font-bold text-left mb-8">
       Jaké jsou cílové skupiny, které vzděláváte?
     </h2>
-    <div className="flex gap-8 flex-wrap">
+    <div className="flex gap-4 flex-col">
       <Input name="pupils" type="checkbox" label="Děti, žáci, studenti" />
       <Input name="adults" type="checkbox" label="Dospělí" />
       <Input

@@ -1,17 +1,11 @@
 import * as z from "zod";
 
-const BaseSchema = z.object({
+export const BaseSchema = z.object({
   name: z.string().min(1, "Název nesmí být prázdný"),
   subname: z.string().optional(),
 });
 
-const AccessibilitySchema = z.object({
-  noBarriers: z.boolean().optional(),
-  hearingImpaired: z.boolean().optional(),
-  sightImpaired: z.boolean().optional(),
-});
-
-const ContactSchema = z.object({
+export const ContactSchema = z.object({
   email: z.string().min(1, "Email nesmí být prázdný").email("Neplatný email"),
   facebook: z.string().optional(),
   instagram: z.string().optional(),
@@ -19,7 +13,7 @@ const ContactSchema = z.object({
   websiteUrl: z.string().min(1, "Adresa webu nesmí být prázdná"),
 });
 
-const FocusSchema = z.object({
+export const FocusSchema = z.object({
   outdoor: z.boolean().optional(),
   infants: z.boolean().optional(),
   waterside: z.boolean().optional(),
@@ -27,22 +21,22 @@ const FocusSchema = z.object({
   elderly: z.boolean().optional(),
 });
 
-const LocationsSchema = z.object({
+export const LocationsSchema = z.object({
   everywhere: z.boolean().optional(),
   region: z.string().optional(),
 });
 
-const PrivacySchema = z.object({
+export const PrivacySchema = z.object({
   public: z.boolean().optional(),
   private: z.boolean().optional(),
 });
 
-const PluralitySchema = z.object({
+export const PluralitySchema = z.object({
   individuals: z.boolean().optional(),
   groups: z.boolean().optional(),
 });
 
-const TargetsSchema = z.object({
+export const TargetsSchema = z.object({
   pupils: z.boolean().optional(),
   adults: z.boolean().optional(),
   lectors: z.boolean().optional(),
@@ -51,12 +45,12 @@ const TargetsSchema = z.object({
   otherTargets: z.string().optional(),
 });
 
-const MethodsSchema = z.object({
+export const MethodsSchema = z.object({
   masking: z.boolean().optional(),
   vr: z.boolean().optional(),
 });
 
-const TypesSchema = z.object({
+export const TypesSchema = z.object({
   courseLive: z.boolean().optional(),
   courseOnline: z.boolean().optional(),
   literature: z.boolean().optional(),
@@ -66,7 +60,7 @@ const TypesSchema = z.object({
   otherTypes: z.string().optional(),
 });
 
-const CertificationsSchema = z.object({
+export const CertificationsSchema = z.object({
   zza_msmt: z.boolean().optional(),
   dvpp_msmt: z.boolean().optional(),
   mpsv: z.boolean().optional(),
@@ -75,7 +69,6 @@ const CertificationsSchema = z.object({
 
 export const CombinedFormSchema = z.object({
   ...BaseSchema.shape,
-  ...AccessibilitySchema.shape,
   ...ContactSchema.shape,
   ...FocusSchema.shape,
   ...LocationsSchema.shape,
@@ -86,3 +79,8 @@ export const CombinedFormSchema = z.object({
   ...TypesSchema.shape,
   ...CertificationsSchema.shape,
 });
+
+export const getKeys = <T extends z.ZodRawShape>(
+  shape: T,
+): (keyof z.infer<z.ZodObject<T>>)[] =>
+  Object.keys(shape) as (keyof z.infer<z.ZodObject<T>>)[];
