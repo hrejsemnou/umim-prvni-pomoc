@@ -1,9 +1,9 @@
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import EducationProvidersForm from "@/features/educationProviders/components/EducationProvidersForm";
 import "@testing-library/jest-dom";
-import { useAddEducationProviderMutation } from "@/lib/store/supabaseApi";
+import { useAddEducationProviderMutation } from "@/lib/store/api";
 
-jest.mock("@/lib/store/supabaseApi", () => ({
+jest.mock("@/lib/store/api", () => ({
   useAddEducationProviderMutation: jest.fn(),
 }));
 

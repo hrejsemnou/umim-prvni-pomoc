@@ -39,35 +39,6 @@ export type Database = {
   };
   public: {
     Tables: {
-      education_provider_accessibility: {
-        Row: {
-          education_provider_id: number;
-          hearing_impaired: boolean;
-          no_barriers: boolean;
-          sight_impaired: boolean;
-        };
-        Insert: {
-          education_provider_id: number;
-          hearing_impaired?: boolean;
-          no_barriers?: boolean;
-          sight_impaired?: boolean;
-        };
-        Update: {
-          education_provider_id?: number;
-          hearing_impaired?: boolean;
-          no_barriers?: boolean;
-          sight_impaired?: boolean;
-        };
-        Relationships: [
-          {
-            foreignKeyName: "education_provider_accessibility_education_provider_id_fkey";
-            columns: ["education_provider_id"];
-            isOneToOne: true;
-            referencedRelation: "education_providers";
-            referencedColumns: ["id"];
-          },
-        ];
-      };
       education_provider_certifications: {
         Row: {
           dvpp_msmt: boolean;
@@ -385,10 +356,6 @@ export type Database = {
       create_full_education_provider: {
         Args: {
           base: Database["public"]["Tables"]["education_providers"]["Insert"];
-          accessibility: Omit<
-            Database["public"]["Tables"]["education_provider_accessibility"]["Insert"],
-            "education_provider_id"
-          >;
           contact: Omit<
             Database["public"]["Tables"]["education_provider_contact"]["Insert"],
             "education_provider_id"

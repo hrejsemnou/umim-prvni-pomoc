@@ -2,10 +2,6 @@ import { Database } from "@/lib/types/database";
 
 export type EducationProviderSelectType =
   Database["public"]["Tables"]["education_providers"]["Row"] & {
-    education_provider_accessibility:
-      | Database["public"]["Tables"]["education_provider_accessibility"]["Row"]
-      | null;
-  } & {
     education_provider_contact:
       | Database["public"]["Tables"]["education_provider_contact"]["Row"]
       | null;
@@ -45,10 +41,6 @@ export type EducationProviderSelectType =
 
 export type EducationProviderInsertType = {
   base: Database["public"]["Tables"]["education_providers"]["Insert"];
-  accessibility: Omit<
-    Database["public"]["Tables"]["education_provider_accessibility"]["Insert"],
-    "education_provider_id"
-  >;
   contact: Omit<
     Database["public"]["Tables"]["education_provider_contact"]["Insert"],
     "education_provider_id"

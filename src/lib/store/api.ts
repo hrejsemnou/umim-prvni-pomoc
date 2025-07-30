@@ -15,7 +15,6 @@ export const api = createApi({
           .from("education_providers")
           .select(
             "*, \
-            education_provider_accessibility(*), \
             education_provider_contact(*), \
             education_provider_focus(*), \
             education_provider_locations(*), \
@@ -43,7 +42,6 @@ export const api = createApi({
               active: body.base.active,
               created_at: body.base.created_at,
             },
-            accessibility: body.accessibility,
             contact: body.contact,
             focus: body.focus,
             locations: body.locations,
