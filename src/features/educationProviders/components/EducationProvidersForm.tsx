@@ -1,37 +1,17 @@
 "use client";
-import { useAddEducationProviderMutation } from "@/lib/store/api";
+import { useState } from "react";
+import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
-import * as z from "zod";
+import { useAddEducationProviderMutation } from "@/lib/store/api";
 import {
-  BaseSchema,
-  CertificationsSchema,
   CombinedFormSchema,
-  ContactSchema,
-  FocusSchema,
-  getKeys,
-  LocationsSchema,
-  MethodsSchema,
-  PluralitySchema,
-  PrivacySchema,
-  TargetsSchema,
-  TypesSchema,
+  FormData,
 } from "@/features/educationProviders/components/FormSchemas";
-import { Base } from "@/features/educationProviders/components/Base";
-import { Contact } from "@/features/educationProviders/components/Contact";
-import { Focus } from "@/features/educationProviders/components/Focus";
-import { Locations } from "@/features/educationProviders/components/Locations";
-import { Privacy } from "@/features/educationProviders/components/Privacy";
-import { Targets } from "@/features/educationProviders/components/Targets";
-import { Methods } from "@/features/educationProviders/components/Methods";
-import { Types } from "@/features/educationProviders/components/Types";
-import { Certifications } from "@/features/educationProviders/components/Certifications";
-import { Plurality } from "@/features/educationProviders/components/Plurality";
-import { ReactElement, useState } from "react";
-import clsx from "clsx";
-
-type FormData = z.infer<typeof CombinedFormSchema>;
+import { FormPrompt } from "@/features/educationProviders/components/FormPrompt";
+import { getFormSteps } from "@/features/educationProviders/utils/getFormSteps";
+import { StepNavigation } from "@/features/educationProviders/components/StepNavigation";
+import { transformData } from "@/features/educationProviders/utils/transformData";
 
 const EducationProvidersForm = () => {
   const methods = useForm<FormData>({
@@ -45,64 +25,8 @@ const EducationProvidersForm = () => {
   const [step, setStep] = useState(0);
 
   const onSubmit: SubmitHandler<FormData> = async (data: FormData) => {
-    const combinedData = {
-      base: { name: data.name, subname: data.subname, active: false },
-      contact: {
-        email: data.email,
-        facebook: data.facebook,
-        instagram: data.instagram,
-        phone: data.phone,
-        website: data.websiteUrl,
-      },
-      focus: {
-        children: data.infants,
-        elderly: data.elderly,
-        outdoor: data.outdoor,
-        waterside: data.waterside,
-        paramedics: data.paramedics,
-      },
-      locations: {
-        everywhere: data.everywhere ?? false,
-        region: data.region ?? "",
-      },
-      privacy: {
-        public: data.public ?? false,
-        private: data.private ?? false,
-      },
-      plurality: {
-        individuals: data.individuals ?? false,
-        groups: data.groups ?? false,
-      },
-      targets: {
-        children: data.pupils,
-        adults: data.adults,
-        schools: data.schools,
-        lectors: data.lectors,
-        professionals: data.professionals,
-        other: data.otherTargets,
-      },
-      methods: {
-        masking: data.masking ?? false,
-        vr: data.vr ?? false,
-      },
-      types: {
-        course_live: data.courseLive,
-        course_online: data.courseOnline,
-        literature: data.literature,
-        application: data.application,
-        podcast: data.podcast,
-        event: data.event,
-        other: data.otherTypes,
-      },
-      certifications: {
-        zza_msmt: data.zza_msmt,
-        dvpp_msmt: data.dvpp_msmt,
-        mpsv: data.mpsv,
-        mzcr: data.mzcr,
-      },
-    };
     try {
-      await addEducationProvider(combinedData).unwrap();
+      await addEducationProvider(transformData(data)).unwrap();
       setFormSent(true);
       scrollTo(0, 0);
     } catch (err) {
@@ -110,73 +34,9 @@ const EducationProvidersForm = () => {
     }
   };
 
-  const courseLiveValue = methods.watch("courseLive");
-  const courseOnlineValue = methods.watch("courseOnline");
-
-  const steps: {
-    id: number;
-    component: ReactElement;
-    fields: (keyof FormData)[];
-  }[] = [
-    {
-      id: 0,
-      component: <Base />,
-      fields: getKeys(BaseSchema.shape),
-    },
-    {
-      id: 1,
-      component: <Contact />,
-      fields: getKeys(ContactSchema.shape),
-    },
-    {
-      id: 2,
-      component: <Types />,
-      fields: getKeys(TypesSchema.shape),
-    },
-    {
-      id: 3,
-      component: <Targets />,
-      fields: getKeys(TargetsSchema.shape),
-    },
-    {
-      id: 4,
-      component: <Focus />,
-      fields: getKeys(FocusSchema.shape),
-    },
-    ...(courseLiveValue
-      ? [
-          {
-            id: 5,
-            component: <Locations />,
-            fields: getKeys(LocationsSchema.shape),
-          },
-        ]
-      : []),
-    ...(courseLiveValue || courseOnlineValue
-      ? [
-          {
-            id: 6,
-            component: <Privacy />,
-            fields: getKeys(PrivacySchema.shape),
-          },
-          {
-            id: 7,
-            component: <Plurality />,
-            fields: getKeys(PluralitySchema.shape),
-          },
-          {
-            id: 8,
-            component: <Methods />,
-            fields: getKeys(MethodsSchema.shape),
-          },
-        ]
-      : []),
-    {
-      id: 9,
-      component: <Certifications />,
-      fields: getKeys(CertificationsSchema.shape),
-    },
-  ];
+  const courseLiveValue = methods.watch("courseLive") ?? false;
+  const courseOnlineValue = methods.watch("courseOnline") ?? false;
+  const steps = getFormSteps(courseLiveValue, courseOnlineValue);
 
   if (formSent) {
     return (
@@ -187,6 +47,7 @@ const EducationProvidersForm = () => {
   } else {
     return (
       <FormProvider {...methods}>
+        <FormPrompt hasUnsavedChanges={methods.formState.isDirty} />
         <form
           onSubmit={methods.handleSubmit(onSubmit)}
           className="flex w-lg flex-col gap-2 px-6 py-6 sm:border-[1px] sm:rounded-2xl"
@@ -196,48 +57,18 @@ const EducationProvidersForm = () => {
           </p>
           {steps[step].component}
 
-          <div
-            className={clsx(
-              "flex",
-              step === 0 ? "justify-end" : "justify-between",
-            )}
-          >
-            {step > 0 && (
-              <button
-                className="text-background font-bold color-foreground bg-accent rounded-[8px] py-2 px-4 disabled:opacity-50 cursor-pointer"
-                type="button"
-                onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
-                  e.preventDefault();
-                  setStep(step - 1);
-                }}
-              >
-                Zpět
-              </button>
-            )}
-
-            {step < steps.length - 1 ? (
-              <button
-                className="text-background font-bold color-foreground bg-primary rounded-[8px] py-2 px-4 disabled:opacity-50 cursor-pointer"
-                type="button"
-                onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
-                  e.preventDefault();
-                  const fieldsToValidate = steps[step].fields;
-                  methods.trigger(fieldsToValidate).then((valid) => {
-                    if (valid) setStep(step + 1);
-                  });
-                }}
-              >
-                Další
-              </button>
-            ) : (
-              <button
-                type="submit"
-                className="text-background font-bold color-foreground bg-primary rounded-[8px] py-2 px-4 disabled:opacity-50 cursor-pointer"
-              >
-                Odeslat
-              </button>
-            )}
-          </div>
+          <StepNavigation
+            step={step}
+            totalSteps={steps.length}
+            onBack={() => setStep(step - 1)}
+            onNext={(e: React.MouseEvent<HTMLButtonElement>) => {
+              e.preventDefault();
+              const fieldsToValidate = steps[step].fields;
+              methods.trigger(fieldsToValidate).then((valid) => {
+                if (valid) setStep(step + 1);
+              });
+            }}
+          />
         </form>
       </FormProvider>
     );

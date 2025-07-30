@@ -84,3 +84,5 @@ export const getKeys = <T extends z.ZodRawShape>(
   shape: T,
 ): (keyof z.infer<z.ZodObject<T>>)[] =>
   Object.keys(shape) as (keyof z.infer<z.ZodObject<T>>)[];
+
+export type FormData = z.infer<typeof CombinedFormSchema>;

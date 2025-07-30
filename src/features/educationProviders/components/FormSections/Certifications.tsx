@@ -12,7 +12,7 @@ export const Certifications = () => (
         label="Zdravotník zotavovacích akcí od MŠMT"
       />
       <Input name="dvpp_msmt" type="checkbox" label="DVPP od MŠMT" />
-      <Input name="mpsv" type="checkbox" label="Akreditace of MPSV" />
+      <Input name="mpsv" type="checkbox" label="Akreditace od MPSV" />
       <Input name="mzcr" type="checkbox" label="MZČR" />
     </div>
   </section>
