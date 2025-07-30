@@ -3,7 +3,7 @@ import { Input } from "@/components/Input";
 // TODO: Render conditionally
 export const Methods = () => (
   <section>
-    <h2 className="text-lg font-bold text-left mb-4">
+    <h2 className="text-lg font-bold text-left mb-8">
       Využíváte při kurzech nějakou specifickou metodiku?
     </h2>
     <div className="flex gap-4 flex-wrap">

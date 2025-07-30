@@ -2,7 +2,7 @@ import { Input } from "@/components/Input";
 
 export const Plurality = () => (
   <section>
-    <h2 className="text-lg font-bold text-left mb-4">
+    <h2 className="text-lg font-bold text-left mb-8">
       Nabízíte kurzy pro jednotlivce nebo pro skupiny?
     </h2>
     <div className="flex gap-4 flex-wrap">

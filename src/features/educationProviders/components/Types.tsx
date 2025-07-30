@@ -3,10 +3,10 @@ import { Input } from "@/components/Input";
 // TODO: Conditional sections if course is checked
 export const Types = () => (
   <section>
-    <h2 className="text-lg font-bold text-left mb-4">
+    <h2 className="text-lg font-bold text-left mb-8">
       Jaké druhy vzdělávání poskytujete?
     </h2>
-    <div className="flex gap-4 flex-wrap">
+    <div className="flex gap-8 flex-wrap">
       <Input name="courseLive" type="checkbox" label="Kurzy živě" />
       <Input name="courseOnline" type="checkbox" label="Kurzy online" />
       <Input
@@ -21,6 +21,8 @@ export const Types = () => (
         label="Vzdělávací akce nebo události"
       />
       <Input name="podcast" type="checkbox" label="Podcasty" />
+    </div>
+    <div className="max-w-48 mt-4">
       <Input name="otherTypes" type="text" label="Něco jiného?" />
     </div>
   </section>

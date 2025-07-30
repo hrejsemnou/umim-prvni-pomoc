@@ -2,13 +2,17 @@ import { Input } from "@/components/Input";
 
 export const Contact = () => (
   <section>
-    <h2 className="text-lg font-bold text-left mb-4">
+    <h2 className="text-lg font-bold text-left mb-8">
       Jak je Vás možné zkontaktovat?
     </h2>
     <Input name="email" type="email" label="Email*" />
-    <Input name="websiteUrl" type="text" label="Web*" />
-    <Input name="phone" type="text" label="Telefon" />
-    <Input name="facebook" type="text" label="Facebook" />
-    <Input name="instagram" type="text" label="Instagram" />
+    <div className="flex justify-between">
+      <Input name="websiteUrl" type="text" label="Web*" />
+      <Input name="phone" type="text" label="Telefon" />
+    </div>
+    <div className="flex justify-between">
+      <Input name="facebook" type="text" label="Facebook" />
+      <Input name="instagram" type="text" label="Instagram" />
+    </div>
   </section>
 );

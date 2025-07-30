@@ -3,10 +3,10 @@ import { Input } from "@/components/Input";
 // TODO: Info hover
 export const Targets = () => (
   <section>
-    <h2 className="text-lg font-bold text-left mb-4">
+    <h2 className="text-lg font-bold text-left mb-8">
       Jaké jsou cílové skupiny, které vzděláváte?
     </h2>
-    <div className="flex gap-4 flex-wrap">
+    <div className="flex gap-8 flex-wrap">
       <Input name="pupils" type="checkbox" label="Děti, žáci, studenti" />
       <Input name="adults" type="checkbox" label="Dospělí" />
       <Input
@@ -24,7 +24,10 @@ export const Targets = () => (
         type="checkbox"
         label="Zdravotní a záchranný personál"
       />
-      <Input name="otherTargets" type="text" label="Jiné" />
+    </div>
+
+    <div className="max-w-48 mt-4">
+      <Input name="otherTargets" type="text" label="Jiné?" />
     </div>
   </section>
 );

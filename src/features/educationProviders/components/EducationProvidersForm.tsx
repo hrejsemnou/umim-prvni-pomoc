@@ -15,6 +15,7 @@ import { Methods } from "@/features/educationProviders/components/Methods";
 import { Types } from "@/features/educationProviders/components/Types";
 import { Certifications } from "@/features/educationProviders/components/Certifications";
 import { Plurality } from "@/features/educationProviders/components/Plurality";
+import { useState } from "react";
 
 type FormData = z.infer<typeof CombinedFormSchema>;
 
@@ -26,14 +27,11 @@ const EducationProvidersForm = () => {
 
   const [addEducationProvider] = useAddEducationProviderMutation();
 
+  const [formSent, setFormSent] = useState<boolean>(false);
+
   const onSubmit: SubmitHandler<FormData> = async (data: FormData) => {
     const combinedData = {
       base: { name: data.name, subname: data.subname, active: false },
-      accessibility: {
-        no_barriers: false,
-        hearing_impaired: false,
-        sight_impaired: false,
-      },
       contact: {
         email: data.email,
         facebook: data.facebook,
@@ -90,6 +88,8 @@ const EducationProvidersForm = () => {
     };
     try {
       await addEducationProvider(combinedData).unwrap();
+      setFormSent(true);
+      scrollTo(0, 0);
     } catch (err) {
       console.error("Failed to create provider:", err);
     }
@@ -98,68 +98,76 @@ const EducationProvidersForm = () => {
   const courseLiveValue = methods.watch("courseLive");
   const courseOnlineValue = methods.watch("courseOnline");
 
-  return (
-    <FormProvider {...methods}>
-      <form
-        onSubmit={methods.handleSubmit(onSubmit)}
-        className="flex max-w-xl flex-col gap-2 px-6 py-6 sm:border-[1px] sm:rounded-2xl"
-      >
-        <Base />
-
-        <hr className="mb-6 mt-6" />
-
-        <Contact />
-
-        <hr className="mb-6 mt-6" />
-
-        <Types />
-
-        <hr className="mb-6 mt-6" />
-
-        <Targets />
-
-        <hr className="mb-6 mt-6" />
-
-        <Focus />
-
-        <hr className="mb-6 mt-6" />
-
-        {courseLiveValue && (
-          <>
-            <Locations />
-
-            <hr className="mb-6 mt-6" />
-          </>
-        )}
-        {(courseLiveValue || courseOnlineValue) && (
-          <>
-            <Privacy />
-
-            <hr className="mb-6 mt-6" />
-
-            <Plurality />
-
-            <hr className="mb-6 mt-6" />
-
-            <Methods />
-
-            <hr className="mb-6 mt-6" />
-          </>
-        )}
-
-        <Certifications />
-
-        <hr className="mb-6 mt-6" />
-
-        <button
-          type="submit"
-          className="text-background font-bold color-foreground self-center bg-primary rounded-[8px] py-2 px-4 disabled:opacity-50"
+  if (formSent) {
+    return (
+      <div>
+        <p>Formulář byl úspěšně odeslán, děkujeme</p>
+      </div>
+    );
+  } else {
+    return (
+      <FormProvider {...methods}>
+        <form
+          onSubmit={methods.handleSubmit(onSubmit)}
+          className="flex max-w-xl flex-col gap-2 px-6 py-6 sm:border-[1px] sm:rounded-2xl"
         >
-          Odeslat
-        </button>
-      </form>
-    </FormProvider>
-  );
+          <Base />
+
+          <hr className="mb-6 mt-6" />
+
+          <Contact />
+
+          <hr className="mb-6 mt-6" />
+
+          <Types />
+
+          <hr className="mb-6 mt-6" />
+
+          <Targets />
+
+          <hr className="mb-6 mt-6" />
+
+          <Focus />
+
+          <hr className="mb-6 mt-6" />
+
+          {courseLiveValue && (
+            <>
+              <Locations />
+
+              <hr className="mb-6 mt-6" />
+            </>
+          )}
+          {(courseLiveValue || courseOnlineValue) && (
+            <>
+              <Privacy />
+
+              <hr className="mb-6 mt-6" />
+
+              <Plurality />
+
+              <hr className="mb-6 mt-6" />
+
+              <Methods />
+
+              <hr className="mb-6 mt-6" />
+            </>
+          )}
+
+          <Certifications />
+
+          <hr className="mb-6 mt-6" />
+
+          <button
+            type="submit"
+            className="text-background font-bold color-foreground self-center bg-primary rounded-[8px] py-2 px-4 disabled:opacity-50 hover:bg-accent cursor-pointer"
+          >
+            Odeslat
+          </button>
+        </form>
+      </FormProvider>
+    );
+  }
 };
 
 export default EducationProvidersForm;

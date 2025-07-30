@@ -4,10 +4,10 @@ import { Input } from "@/components/Input";
 //TODO: Add masking courses conditionaly
 export const Focus = () => (
   <section>
-    <h2 className="text-lg font-bold text-left mb-4">
+    <h2 className="text-lg font-bold text-left mb-8">
       Je Vaše vzdělávání na něco zaměřené?
     </h2>
-    <div className="flex gap-4 flex-wrap">
+    <div className="flex gap-8 flex-wrap">
       <Input
         name="infants"
         type="checkbox"
