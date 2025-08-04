@@ -331,6 +331,7 @@ export type Database = {
           id: number;
           name: string;
           subname: string | null;
+          image: string | null;
         };
         Insert: {
           active?: boolean;
@@ -338,6 +339,7 @@ export type Database = {
           id?: number;
           name?: string;
           subname?: string | null;
+          image?: string | null;
         };
         Update: {
           active?: boolean;
@@ -345,6 +347,7 @@ export type Database = {
           id?: number;
           name?: string;
           subname?: string | null;
+          image?: string | null;
         };
         Relationships: [];
       };

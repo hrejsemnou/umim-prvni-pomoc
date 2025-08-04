@@ -41,6 +41,7 @@ export const api = createApi({
               subname: body.base.subname,
               active: body.base.active,
               created_at: body.base.created_at,
+              image: body.base.image,
             },
             contact: body.contact,
             focus: body.focus,
@@ -73,3 +74,23 @@ export const {
   useGetEducationProvidersQuery,
   useAddEducationProviderMutation,
 } = api;
+
+export const uploadImageAndGetUrl = async (
+  file: File,
+  providerTempId: string,
+) => {
+  const uploadResult = await supabase.storage
+    .from("education-provider-images")
+    .upload(`profile_${providerTempId}`, file, {
+      cacheControl: "3600",
+      upsert: true,
+    });
+
+  if (uploadResult.error) throw uploadResult.error;
+
+  const { data: urlData } = supabase.storage
+    .from("education-provider-images")
+    .getPublicUrl(`profile_${providerTempId}`);
+
+  return urlData.publicUrl;
+};

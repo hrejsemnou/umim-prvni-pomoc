@@ -13,7 +13,7 @@ export const Types = () => (
       <Input
         name="event"
         type="checkbox"
-        label="Vzdělávací akce nebo události"
+        label="Vzdělávací workshopy, přednášky a akce"
       />
       <Input
         name="application"

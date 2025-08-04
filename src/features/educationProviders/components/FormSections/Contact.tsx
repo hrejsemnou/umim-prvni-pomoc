@@ -3,7 +3,7 @@ import { Input } from "@/components/Input";
 export const Contact = () => (
   <section>
     <h2 className="text-lg font-bold text-left mb-8">
-      Jak je Vás možné zkontaktovat?
+      Jak je vás možné zkontaktovat?
     </h2>
     <Input name="email" type="email" label="Email*" />
     <div className="flex justify-between">

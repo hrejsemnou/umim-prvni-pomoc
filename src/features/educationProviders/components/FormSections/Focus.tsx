@@ -4,7 +4,7 @@ import { Input } from "@/components/Input";
 export const Focus = () => (
   <section>
     <h2 className="text-lg font-bold text-left mb-8">
-      Je Vaše vzdělávání na něco zaměřené?
+      Je vzdělávání, které poskytujete, specificky zaměřené?
     </h2>
     <div className="flex gap-4 flex-col mb-6">
       <Input

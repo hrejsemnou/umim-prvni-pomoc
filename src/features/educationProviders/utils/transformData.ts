@@ -1,8 +1,13 @@
 import { FormData } from "@/features/educationProviders/components/FormSchemas";
 
-export const transformData = (data: FormData) => {
+export const transformData = (data: FormData, imageUrl: string) => {
   return {
-    base: { name: data.name, subname: data.subname, active: false },
+    base: {
+      name: data.name,
+      subname: data.subname,
+      active: false,
+      image: imageUrl,
+    },
     contact: {
       email: data.email,
       facebook: data.facebook,

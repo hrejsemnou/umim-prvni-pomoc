@@ -1,3 +1,4 @@
+import { ImageInput } from "@/components/ImageInput";
 import { Input } from "@/components/Input";
 
 export const Base = () => (
@@ -15,5 +16,6 @@ export const Base = () => (
       placeholder="První český vyhledávač vzdělání v první pomoci"
       label="Podnázev"
     />
+    <ImageInput name="image" label="Logo" />
   </section>
 );

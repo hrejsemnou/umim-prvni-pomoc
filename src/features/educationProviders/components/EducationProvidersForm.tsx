@@ -3,7 +3,10 @@ import { useState } from "react";
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import { useAddEducationProviderMutation } from "@/lib/store/api";
+import {
+  uploadImageAndGetUrl,
+  useAddEducationProviderMutation,
+} from "@/lib/store/api";
 import {
   CombinedFormSchema,
   FormData,
@@ -25,8 +28,20 @@ const EducationProvidersForm = () => {
   const [step, setStep] = useState(0);
 
   const onSubmit: SubmitHandler<FormData> = async (data: FormData) => {
+    let imageUrl = "";
+    if (data.image?.length !== 0) {
+      try {
+        imageUrl = await uploadImageAndGetUrl(
+          data.image[0],
+          `${data.name}-${Date.now()}`,
+        );
+      } catch (err) {
+        console.error("Failed to upload logo:", err);
+      }
+    }
+
     try {
-      await addEducationProvider(transformData(data)).unwrap();
+      await addEducationProvider(transformData(data, imageUrl)).unwrap();
       setFormSent(true);
       scrollTo(0, 0);
     } catch (err) {

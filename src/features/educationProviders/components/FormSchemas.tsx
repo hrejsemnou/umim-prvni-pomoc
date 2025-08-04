@@ -1,8 +1,48 @@
 import * as z from "zod";
 
+const ACCEPTED_IMAGE_TYPES = [
+  "image/jpeg",
+  "image/jpg",
+  "image/png",
+  "image/webp",
+];
+const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
+
 export const BaseSchema = z.object({
   name: z.string().min(1, "Název nesmí být prázdný"),
   subname: z.string().optional(),
+  image: z
+    // https://github.com/orgs/react-hook-form/discussions/11096
+    .any()
+    .optional()
+    .refine(
+      (files) => {
+        if (!files || files.length === 0) return true; // ✅ skip validation if empty
+        return files.length > 0;
+      },
+      {
+        message: "An image must be selected.",
+      },
+    )
+    .refine(
+      (files) => {
+        if (!files || files.length === 0) return true; // ✅ skip validation if empty
+        return files[0].size <= MAX_FILE_SIZE;
+      },
+      {
+        message:
+          "The image is too large. Please choose an image smaller than 5MB.",
+      },
+    )
+    .refine(
+      (files) => {
+        if (!files || files.length === 0) return true; // ✅ skip validation if empty
+        return ACCEPTED_IMAGE_TYPES.includes(files[0].type);
+      },
+      {
+        message: "Please upload a valid image file (JPEG, PNG, or WebP).",
+      },
+    ),
 });
 
 export const ContactSchema = z.object({
