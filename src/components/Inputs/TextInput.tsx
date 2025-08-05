@@ -4,6 +4,7 @@ interface TextInputProps {
   name: string;
   placeholder?: string;
   label: string;
+  type?: string;
 }
 
 export const TextInput = (props: TextInputProps) => {
@@ -16,7 +17,7 @@ export const TextInput = (props: TextInputProps) => {
       </label>
       <input
         id={props.name}
-        type="text"
+        type={props.type ?? "text"}
         placeholder={props.placeholder}
         {...register(props.name)}
         className="py-2 px-4 text-foreground bg-background rounded-[8px] border-foreground border-[1px]"

@@ -1,5 +1,5 @@
 "use client";
-import { Input } from "@/components/Input";
+import { TextInput } from "@/components/Inputs";
 import { supabase } from "@/lib/supabase/client";
 import { zodResolver } from "@hookform/resolvers/zod";
 
@@ -43,8 +43,8 @@ const AdminLoginForm = () => {
           <h2 className="text-lg font-bold text-left mb-4">
             Zadejte přihlašovací údaje
           </h2>
-          <Input name="email" type="text" placeholder="" label="Email*" />
-          <Input
+          <TextInput name="email" placeholder="" label="Email*" />
+          <TextInput
             name="password"
             type="password"
             placeholder=""
