@@ -31,7 +31,7 @@ export const Targets = () => (
     </div>
 
     <div className="max-w-48 mt-4">
-      <Input name="otherTargets" type="text" label="Jiné?" />
+      <Input name="otherTargets" type="text" label="Jiné skupiny?" />
     </div>
   </section>
 );

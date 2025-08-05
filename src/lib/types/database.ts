@@ -111,6 +111,7 @@ export type Database = {
           children: boolean;
           education_provider_id: number;
           elderly: boolean;
+          other: string | null;
           outdoor: boolean;
           paramedics: boolean;
           waterside: boolean;
@@ -119,6 +120,7 @@ export type Database = {
           children?: boolean;
           education_provider_id: number;
           elderly?: boolean;
+          other?: string | null;
           outdoor?: boolean;
           paramedics?: boolean;
           waterside?: boolean;
@@ -127,6 +129,7 @@ export type Database = {
           children?: boolean;
           education_provider_id?: number;
           elderly?: boolean;
+          other?: string | null;
           outdoor?: boolean;
           paramedics?: boolean;
           waterside?: boolean;
@@ -144,18 +147,48 @@ export type Database = {
       education_provider_locations: {
         Row: {
           education_provider_id: number;
-          everywhere: boolean;
-          region: string | null;
+          jihomoravsky_kraj: boolean | null;
+          karlovarsky_kraj: boolean | null;
+          kralovehradecky_kraj: boolean | null;
+          liberecky_kraj: boolean | null;
+          moravskoslezsky_kraj: boolean | null;
+          olomoucky_kraj: boolean | null;
+          pardubicky_kraj: boolean | null;
+          plzensky_kraj: boolean | null;
+          praha: boolean | null;
+          stredocesky_kraj: boolean | null;
+          vysocina: boolean | null;
+          zlinsky_kraj: boolean | null;
         };
         Insert: {
           education_provider_id: number;
-          everywhere?: boolean;
-          region?: string | null;
+          jihomoravsky_kraj?: boolean | null;
+          karlovarsky_kraj?: boolean | null;
+          kralovehradecky_kraj?: boolean | null;
+          liberecky_kraj?: boolean | null;
+          moravskoslezsky_kraj?: boolean | null;
+          olomoucky_kraj?: boolean | null;
+          pardubicky_kraj?: boolean | null;
+          plzensky_kraj?: boolean | null;
+          praha?: boolean | null;
+          stredocesky_kraj?: boolean | null;
+          vysocina?: boolean | null;
+          zlinsky_kraj?: boolean | null;
         };
         Update: {
           education_provider_id?: number;
-          everywhere?: boolean;
-          region?: string | null;
+          jihomoravsky_kraj?: boolean | null;
+          karlovarsky_kraj?: boolean | null;
+          kralovehradecky_kraj?: boolean | null;
+          liberecky_kraj?: boolean | null;
+          moravskoslezsky_kraj?: boolean | null;
+          olomoucky_kraj?: boolean | null;
+          pardubicky_kraj?: boolean | null;
+          plzensky_kraj?: boolean | null;
+          praha?: boolean | null;
+          stredocesky_kraj?: boolean | null;
+          vysocina?: boolean | null;
+          zlinsky_kraj?: boolean | null;
         };
         Relationships: [
           {
@@ -329,25 +362,25 @@ export type Database = {
           active: boolean;
           created_at: string;
           id: number;
+          image: string | null;
           name: string;
           subname: string | null;
-          image: string | null;
         };
         Insert: {
           active?: boolean;
           created_at?: string;
           id?: number;
+          image?: string | null;
           name?: string;
           subname?: string | null;
-          image?: string | null;
         };
         Update: {
           active?: boolean;
           created_at?: string;
           id?: number;
+          image?: string | null;
           name?: string;
           subname?: string | null;
-          image?: string | null;
         };
         Relationships: [];
       };

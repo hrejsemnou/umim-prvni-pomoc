@@ -59,11 +59,22 @@ export const FocusSchema = z.object({
   waterside: z.boolean().optional(),
   paramedics: z.boolean().optional(),
   elderly: z.boolean().optional(),
+  otherFocus: z.string().optional(),
 });
 
 export const LocationsSchema = z.object({
-  everywhere: z.boolean().optional(),
-  region: z.string().optional(),
+  jihomoravsky_kraj: z.boolean().optional(),
+  karlovarsky_kraj: z.boolean().optional(),
+  kralovehradecky_kraj: z.boolean().optional(),
+  liberecky_kraj: z.boolean().optional(),
+  moravskoslezsky_kraj: z.boolean().optional(),
+  olomoucky_kraj: z.boolean().optional(),
+  pardubicky_kraj: z.boolean().optional(),
+  plzensky_kraj: z.boolean().optional(),
+  praha: z.boolean().optional(),
+  stredocesky_kraj: z.boolean().optional(),
+  vysocina: z.boolean().optional(),
+  zlinsky_kraj: z.boolean().optional(),
 });
 
 export const PrivacySchema = z.object({

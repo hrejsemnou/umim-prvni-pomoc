@@ -10,7 +10,7 @@ export const Focus = () => (
       </h2>
       <Tooltip content="Učíte první pomoc ve specifické oblasti?" />
     </div>
-    <div className="flex gap-4 flex-col mb-6">
+    <div className="flex gap-4 flex-col">
       <Input
         name="infants"
         type="checkbox"
@@ -28,6 +28,9 @@ export const Focus = () => (
         type="checkbox"
         label="Zdravotník zotavovacích akcí"
       />
+    </div>
+    <div className="max-w-48 mt-4">
+      <Input name="otherFocus" type="text" label="Jiné zaměření?" />
     </div>
   </section>
 );
