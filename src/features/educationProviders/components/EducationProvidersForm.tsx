@@ -65,7 +65,7 @@ const EducationProvidersForm = () => {
         <FormPrompt hasUnsavedChanges={methods.formState.isDirty} />
         <form
           onSubmit={methods.handleSubmit(onSubmit)}
-          className="flex w-lg flex-col gap-2 px-6 py-6 sm:border-[1px] sm:rounded-2xl"
+          className="flex w-lg md:w-xl flex-col gap-2 px-6 py-6 sm:border-[1px] sm:rounded-2xl"
         >
           <p className="mb-4">
             Krok: {step + 1} / {steps.length}
