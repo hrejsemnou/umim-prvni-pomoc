@@ -1,4 +1,4 @@
-import { Input } from "@/components/Input";
+import { CheckboxInput } from "@/components/Inputs";
 
 export const Privacy = () => (
   <section>
@@ -6,8 +6,8 @@ export const Privacy = () => (
       Nabízíte kurzy veřejné nebo soukromé?
     </h2>
     <div className="flex gap-4 flex-col mb-6">
-      <Input name="public" type="checkbox" label="Veřejné" />
-      <Input name="private" type="checkbox" label="Soukromé" />
+      <CheckboxInput name="public" label="Veřejné" />
+      <CheckboxInput name="private" label="Soukromé" />
     </div>
   </section>
 );

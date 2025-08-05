@@ -1,4 +1,4 @@
-import { Input } from "@/components/Input";
+import { TextInput, CheckboxInput } from "@/components/Inputs";
 
 export const Methods = () => (
   <section>
@@ -6,8 +6,11 @@ export const Methods = () => (
       Využíváte při kurzech nějakou specifickou metodiku?
     </h2>
     <div className="flex gap-4 flex-col mb-6">
-      <Input name="masking" type="checkbox" label="Maskování" />
-      <Input name="vr" type="checkbox" label="VR" />
+      <CheckboxInput name="masking" label="Maskování" />
+      <CheckboxInput name="vr" label="VR" />
+    </div>
+    <div className="max-w-48 mt-4">
+      <TextInput name="otherMethod" label="Jiná metodika?" />
     </div>
   </section>
 );

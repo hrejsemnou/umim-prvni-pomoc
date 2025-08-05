@@ -1,4 +1,4 @@
-import { Input } from "@/components/Input";
+import { CheckboxInput, TextInput } from "@/components/Inputs";
 
 export const Types = () => (
   <section>
@@ -6,23 +6,21 @@ export const Types = () => (
       Jaké druhy vzdělávání poskytujete?
     </h2>
     <div className="flex gap-4 flex-col">
-      <Input name="courseLive" type="checkbox" label="Kurzy živě" />
-      <Input name="courseOnline" type="checkbox" label="Kurzy online" />
-      <Input name="literature" type="checkbox" label="Literatura" />
-      <Input name="podcast" type="checkbox" label="Podcasty" />
-      <Input
+      <CheckboxInput name="courseLive" label="Kurzy živě" />
+      <CheckboxInput name="courseOnline" label="Kurzy online" />
+      <CheckboxInput name="literature" label="Literatura" />
+      <CheckboxInput name="podcast" label="Podcasty" />
+      <CheckboxInput
         name="event"
-        type="checkbox"
         label="Vzdělávací workshopy, přednášky a akce"
       />
-      <Input
+      <CheckboxInput
         name="application"
-        type="checkbox"
         label="Vzdělávací weby, hry nebo programy"
       />
     </div>
     <div className="max-w-48 mt-4">
-      <Input name="otherTypes" type="text" label="Něco jiného?" />
+      <TextInput name="otherTypes" label="Něco jiného?" />
     </div>
   </section>
 );

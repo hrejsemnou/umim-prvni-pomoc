@@ -231,16 +231,19 @@ export type Database = {
           education_provider_id: number;
           masking: boolean;
           vr: boolean;
+          other: string | null;
         };
         Insert: {
           education_provider_id: number;
           masking?: boolean;
           vr?: boolean;
+          other?: string | null;
         };
         Update: {
           education_provider_id?: number;
           masking?: boolean;
           vr?: boolean;
+          other?: string | null;
         };
         Relationships: [
           {

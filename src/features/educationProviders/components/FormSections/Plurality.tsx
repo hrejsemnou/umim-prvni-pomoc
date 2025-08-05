@@ -1,4 +1,4 @@
-import { Input } from "@/components/Input";
+import { CheckboxInput } from "@/components/Inputs";
 
 export const Plurality = () => (
   <section>
@@ -6,8 +6,8 @@ export const Plurality = () => (
       Nabízíte kurzy pro jednotlivce nebo pro skupiny?
     </h2>
     <div className="flex gap-4 flex-col mb-6">
-      <Input name="individuals" type="checkbox" label="Jednotlivci" />
-      <Input name="groups" type="checkbox" label="Skupiny" />
+      <CheckboxInput name="individuals" label="Jednotlivci" />
+      <CheckboxInput name="groups" label="Skupiny" />
     </div>
   </section>
 );

@@ -1,4 +1,4 @@
-import { TextareaInput } from "@/components/TextareaInput";
+import { TextareaInput } from "@/components/Inputs";
 
 export const AdditionalInfo = () => (
   <section>

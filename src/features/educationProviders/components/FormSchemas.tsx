@@ -99,6 +99,7 @@ export const TargetsSchema = z.object({
 export const MethodsSchema = z.object({
   masking: z.boolean().optional(),
   vr: z.boolean().optional(),
+  otherMethod: z.string().optional(),
 });
 
 export const TypesSchema = z.object({

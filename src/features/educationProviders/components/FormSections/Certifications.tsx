@@ -1,4 +1,4 @@
-import { Input } from "@/components/Input";
+import { CheckboxInput } from "@/components/Inputs";
 
 export const Certifications = () => (
   <section>
@@ -6,14 +6,13 @@ export const Certifications = () => (
       Mají kurzy, které poskytujete, akreditaci?
     </h2>
     <div className="flex gap-4 flex-col mb-6">
-      <Input
+      <CheckboxInput
         name="zza_msmt"
-        type="checkbox"
         label="Zdravotník zotavovacích akcí od MŠMT"
       />
-      <Input name="dvpp_msmt" type="checkbox" label="DVPP od MŠMT" />
-      <Input name="mpsv" type="checkbox" label="Akreditace od MPSV" />
-      <Input name="mzcr" type="checkbox" label="MZČR" />
+      <CheckboxInput name="dvpp_msmt" label="DVPP od MŠMT" />
+      <CheckboxInput name="mpsv" label="Akreditace od MPSV" />
+      <CheckboxInput name="mzcr" label="MZČR" />
     </div>
   </section>
 );

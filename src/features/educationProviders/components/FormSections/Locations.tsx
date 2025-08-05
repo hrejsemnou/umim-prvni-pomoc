@@ -1,4 +1,4 @@
-import { Input } from "@/components/Input";
+import { CheckboxInput } from "@/components/Inputs";
 
 export const Locations = () => (
   <section>
@@ -6,32 +6,20 @@ export const Locations = () => (
       Kde kurzy zejména pořádáte?
     </h2>
     <div className="flex gap-4 flex-col mb-6">
-      <Input name="praha" type="checkbox" label="Hlavní město Praha" />
-      <Input name="stredocesky_kraj" type="checkbox" label="Středočeský kraj" />
-      <Input name="jihocesky_kraj" type="checkbox" label="Jihočeský kraj" />
-      <Input name="plzensky_kraj" type="checkbox" label="Plzeňský kraj" />
-      <Input name="karlovarsky_kraj" type="checkbox" label="Karlovarský kraj" />
-      <Input name="ustecky_kraj" type="checkbox" label="Ústecký kraj" />
-      <Input name="liberecky_kraj" type="checkbox" label="Liberecký kraj" />
-      <Input
-        name="kralovehradecky_kraj"
-        type="checkbox"
-        label="Královéhradecký kraj"
-      />
-      <Input name="pardubicky_kraj" type="checkbox" label="Pardubický kraj" />
-      <Input name="vysocina" type="checkbox" label="Kraj Vysočina" />
-      <Input
-        name="jihomoravsky_kraj"
-        type="checkbox"
-        label="Jihomoravský kraj"
-      />
-      <Input name="olomoucky_kraj" type="checkbox" label="Olomoucký kraj" />
-      <Input
-        name="moravskoslezsky_kraj"
-        type="checkbox"
-        label="Moravskoslezský kraj"
-      />
-      <Input name="zlinsky_kraj" type="checkbox" label="Zlínský kraj" />
+      <CheckboxInput name="praha" label="Hlavní město Praha" />
+      <CheckboxInput name="stredocesky_kraj" label="Středočeský kraj" />
+      <CheckboxInput name="jihocesky_kraj" label="Jihočeský kraj" />
+      <CheckboxInput name="plzensky_kraj" label="Plzeňský kraj" />
+      <CheckboxInput name="karlovarsky_kraj" label="Karlovarský kraj" />
+      <CheckboxInput name="ustecky_kraj" label="Ústecký kraj" />
+      <CheckboxInput name="liberecky_kraj" label="Liberecký kraj" />
+      <CheckboxInput name="kralovehradecky_kraj" label="Královéhradecký kraj" />
+      <CheckboxInput name="pardubicky_kraj" label="Pardubický kraj" />
+      <CheckboxInput name="vysocina" label="Kraj Vysočina" />
+      <CheckboxInput name="jihomoravsky_kraj" label="Jihomoravský kraj" />
+      <CheckboxInput name="olomoucky_kraj" label="Olomoucký kraj" />
+      <CheckboxInput name="moravskoslezsky_kraj" label="Moravskoslezský kraj" />
+      <CheckboxInput name="zlinsky_kraj" label="Zlínský kraj" />
     </div>
   </section>
 );

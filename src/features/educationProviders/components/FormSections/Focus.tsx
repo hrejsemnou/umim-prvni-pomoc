@@ -1,7 +1,6 @@
-import { Input } from "@/components/Input";
+import { TextInput, CheckboxInput } from "@/components/Inputs";
 import { Tooltip } from "@/components/Tooltip";
 
-//TODO: Add info
 export const Focus = () => (
   <section>
     <div className="mb-8 flex gap-2">
@@ -11,26 +10,14 @@ export const Focus = () => (
       <Tooltip content="Učíte první pomoc ve specifické oblasti?" />
     </div>
     <div className="flex gap-4 flex-col">
-      <Input
-        name="infants"
-        type="checkbox"
-        label="První pomoc pro děti a miminka"
-      />
-      <Input name="elderly" type="checkbox" label="První pomoc pro seniory" />
-      <Input name="outdoor" type="checkbox" label="Hory, turistika" />
-      <Input
-        name="waterside"
-        type="checkbox"
-        label="Vodní záchranář, plavčík"
-      />
-      <Input
-        name="paramedics"
-        type="checkbox"
-        label="Zdravotník zotavovacích akcí"
-      />
+      <CheckboxInput name="infants" label="První pomoc pro děti a miminka" />
+      <CheckboxInput name="elderly" label="První pomoc pro seniory" />
+      <CheckboxInput name="outdoor" label="Hory, turistika" />
+      <CheckboxInput name="waterside" label="Vodní záchranář, plavčík" />
+      <CheckboxInput name="paramedics" label="Zdravotník zotavovacích akcí" />
     </div>
     <div className="max-w-48 mt-4">
-      <Input name="otherFocus" type="text" label="Jiné zaměření?" />
+      <TextInput name="otherFocus" label="Jiné zaměření?" />
     </div>
   </section>
 );

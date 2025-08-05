@@ -1,5 +1,5 @@
 import { useFormContext } from "react-hook-form";
-import { Tooltip } from "./Tooltip";
+import { Tooltip } from "@/components/Tooltip";
 
 interface ImageInputProps {
   name: string;

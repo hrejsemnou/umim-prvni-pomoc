@@ -56,6 +56,7 @@ export const transformData = (data: FormData, imageUrl: string) => {
     methods: {
       masking: data.masking ?? false,
       vr: data.vr ?? false,
+      other: data.otherMethod ?? "",
     },
     types: {
       course_live: data.courseLive,
