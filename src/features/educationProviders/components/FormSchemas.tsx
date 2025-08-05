@@ -118,6 +118,11 @@ export const CertificationsSchema = z.object({
   mzcr: z.boolean().optional(),
 });
 
+export const AdditionalInfoSchema = z.object({
+  otherAdditionalInfo: z.string().optional(),
+  feedback: z.string().optional(),
+});
+
 export const CombinedFormSchema = z.object({
   ...BaseSchema.shape,
   ...ContactSchema.shape,
@@ -129,6 +134,7 @@ export const CombinedFormSchema = z.object({
   ...MethodsSchema.shape,
   ...TypesSchema.shape,
   ...CertificationsSchema.shape,
+  ...AdditionalInfoSchema.shape,
 });
 
 export const getKeys = <T extends z.ZodRawShape>(

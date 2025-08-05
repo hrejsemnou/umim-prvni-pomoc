@@ -39,6 +39,32 @@ export type Database = {
   };
   public: {
     Tables: {
+      education_provider_additional_info: {
+        Row: {
+          education_provider_id: number;
+          feedback: string | null;
+          other: string | null;
+        };
+        Insert: {
+          education_provider_id: number;
+          feedback?: string | null;
+          other?: string | null;
+        };
+        Update: {
+          education_provider_id?: number;
+          feedback?: string | null;
+          other?: string | null;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "education_provider_additional_info_education_provider_id_fkey";
+            columns: ["education_provider_id"];
+            isOneToOne: true;
+            referencedRelation: "education_providers";
+            referencedColumns: ["id"];
+          },
+        ];
+      };
       education_provider_certifications: {
         Row: {
           dvpp_msmt: boolean;
@@ -426,6 +452,10 @@ export type Database = {
           >;
           certifications: Omit<
             Database["public"]["Tables"]["education_provider_certifications"]["Insert"],
+            "education_provider_id"
+          >;
+          additional_info: Omit<
+            Database["public"]["Tables"]["education_provider_additional_info"]["Insert"],
             "education_provider_id"
           >;
         };

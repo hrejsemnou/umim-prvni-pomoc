@@ -37,6 +37,10 @@ export type EducationProviderSelectType =
     education_provider_types:
       | Database["public"]["Tables"]["education_provider_types"]["Row"]
       | null;
+  } & {
+    education_provider_additional_info:
+      | Database["public"]["Tables"]["education_provider_additional_info"]["Row"]
+      | null;
   };
 
 export type EducationProviderInsertType = {
@@ -75,6 +79,10 @@ export type EducationProviderInsertType = {
   >;
   types: Omit<
     Database["public"]["Tables"]["education_provider_types"]["Insert"],
+    "education_provider_id"
+  >;
+  additional_info: Omit<
+    Database["public"]["Tables"]["education_provider_additional_info"]["Insert"],
     "education_provider_id"
   >;
 };

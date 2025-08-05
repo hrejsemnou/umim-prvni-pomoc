@@ -72,5 +72,9 @@ export const transformData = (data: FormData, imageUrl: string) => {
       mpsv: data.mpsv,
       mzcr: data.mzcr,
     },
+    additional_info: {
+      other: data.otherAdditionalInfo,
+      feedback: data.feedback,
+    },
   };
 };

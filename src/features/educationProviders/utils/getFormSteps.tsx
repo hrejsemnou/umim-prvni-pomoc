@@ -10,6 +10,7 @@ import { Methods } from "@/features/educationProviders/components/FormSections/M
 import { Types } from "@/features/educationProviders/components/FormSections/Types";
 import { Certifications } from "@/features/educationProviders/components/FormSections/Certifications";
 import { Plurality } from "@/features/educationProviders/components/FormSections/Plurality";
+import { AdditionalInfo } from "@/features/educationProviders/components/FormSections/AdditionalInfo";
 
 import {
   BaseSchema,
@@ -22,6 +23,7 @@ import {
   PluralitySchema,
   MethodsSchema,
   CertificationsSchema,
+  AdditionalInfoSchema,
   getKeys,
   FormData,
 } from "@/features/educationProviders/components/FormSchemas";
@@ -46,22 +48,27 @@ export const getFormSteps = (
           component: <Locations />,
           fields: getKeys(LocationsSchema.shape),
         },
+        { id: 6, component: <Methods />, fields: getKeys(MethodsSchema.shape) },
       ]
     : []),
   ...(courseLive || courseOnline
     ? [
-        { id: 6, component: <Privacy />, fields: getKeys(PrivacySchema.shape) },
+        { id: 7, component: <Privacy />, fields: getKeys(PrivacySchema.shape) },
         {
-          id: 7,
+          id: 8,
           component: <Plurality />,
           fields: getKeys(PluralitySchema.shape),
         },
-        { id: 8, component: <Methods />, fields: getKeys(MethodsSchema.shape) },
       ]
     : []),
   {
     id: 9,
     component: <Certifications />,
     fields: getKeys(CertificationsSchema.shape),
+  },
+  {
+    id: 10,
+    component: <AdditionalInfo />,
+    fields: getKeys(AdditionalInfoSchema.shape),
   },
 ];
