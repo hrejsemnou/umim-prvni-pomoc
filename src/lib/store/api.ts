@@ -23,7 +23,7 @@ export const api = createApi({
             education_provider_certifications(*), \
             education_provider_plurality(*), \
             education_provider_methods(*), \
-            education_provider_types(*) \
+            education_provider_types(*), \
             education_provider_additional_info(*)",
           );
         if (error) {
