@@ -1,4 +1,5 @@
 import { useFormContext } from "react-hook-form";
+import { Tooltip } from "./Tooltip";
 
 interface ImageInputProps {
   name: string;
@@ -14,7 +15,10 @@ export const ImageInput = ({ name, label }: ImageInputProps) => {
 
   return (
     <div className="mb-4 flex flex-col gap-2">
-      <label className="font-bold self-start">{label}</label>
+      <div className="flex gap-2">
+        <label className="font-bold self-start">{label}</label>
+        <Tooltip content="Logo by mělo mít čtvercový formát a nemělo by přesahovat 5MB." />
+      </div>
 
       <div className="flex flex-col items-start gap-2">
         <input
@@ -29,7 +33,7 @@ export const ImageInput = ({ name, label }: ImageInputProps) => {
           htmlFor={name}
           className="cursor-pointer inline-block bg-background border-[1px] border-primary text-primary px-4 py-2 rounded-[8px]"
         >
-          Vybrat obrázek
+          Vyberte soubor
         </label>
 
         {selectedFileName ? (

@@ -1,11 +1,15 @@
 import { Input } from "@/components/Input";
+import { Tooltip } from "@/components/Tooltip";
 
 // TODO: Info hover
 export const Targets = () => (
   <section>
-    <h2 className="text-lg font-bold text-left mb-8">
-      Jaké jsou cílové skupiny, které vzděláváte?
-    </h2>
+    <div className="flex mb-8 gap-2">
+      <h2 className="text-lg font-bold text-left">
+        Jaké jsou cílové skupiny, které vzděláváte?
+      </h2>
+      <Tooltip content="Kdo je ten, kdo se učí?" />
+    </div>
     <div className="flex gap-4 flex-col">
       <Input name="pupils" type="checkbox" label="Děti, žáci, studenti" />
       <Input name="adults" type="checkbox" label="Dospělí" />
